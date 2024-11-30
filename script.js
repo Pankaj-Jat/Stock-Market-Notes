@@ -46,20 +46,52 @@ function createModuleLinks(modulesToShow = modules) {
             // Update active state
             document.querySelectorAll('.module-list a').forEach(a => a.classList.remove('active'));
             link.classList.add('active');
+            
+            // Hide sidebar for both desktop and mobile
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+            const backButton = document.querySelector('.mobile-back-btn');
+            
+            sidebar.classList.add('hidden');
+            content.classList.add('sidebar-hidden');
+            backButton.classList.add('visible');
         });
         moduleList.appendChild(link);
     });
 }
 
+// Add back button functionality
+function addBackButton() {
+    // Remove existing back button if any
+    const existingButton = document.querySelector('.mobile-back-btn');
+    if (existingButton) {
+        existingButton.remove();
+    }
+
+    const contentArea = document.getElementById('content-area');
+    const backButton = document.createElement('button');
+    backButton.className = 'mobile-back-btn';
+    backButton.innerHTML = '<i class="fas fa-bars"></i> Show Menu';
+    
+    backButton.addEventListener('click', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+        sidebar.classList.remove('hidden');
+        content.classList.remove('sidebar-hidden');
+        backButton.classList.remove('visible');
+    });
+    
+    document.body.appendChild(backButton);
+    return backButton;
+}
+
 // Load module content
 function loadModule(module) {
-    // Create an iframe to load the content
     const iframe = document.createElement('iframe');
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = 'none';
     
-    // Set up error handling
     iframe.onerror = () => {
         contentArea.innerHTML = `
             <div class="error">
@@ -69,9 +101,16 @@ function loadModule(module) {
         `;
     };
 
-    // Set the source and add to content area
     iframe.src = module.file;
     contentArea.innerHTML = '';
+    
+    // Ensure back button exists
+    let backButton = document.querySelector('.mobile-back-btn');
+    if (!backButton) {
+        backButton = addBackButton();
+    }
+    backButton.classList.add('visible');
+    
     contentArea.appendChild(iframe);
 }
 
@@ -84,5 +123,14 @@ searchInput.addEventListener('input', (e) => {
     createModuleLinks(filteredModules);
 });
 
+// Handle window resize
+window.addEventListener('resize', () => {
+    const backButton = document.querySelector('.mobile-back-btn');
+    if (backButton) {
+        backButton.style.display = window.innerWidth <= 768 ? 'block' : 'none';
+    }
+});
+
 // Initialize the page
 createModuleLinks();
+addBackButton(); // Add the back button on page load
