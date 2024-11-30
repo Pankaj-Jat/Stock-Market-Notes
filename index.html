@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Learning Hub</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Trading Hub</h2>
+                </div>
+                <button id="theme-toggle" title="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Search modules...">
+                <i class="fas fa-search"></i>
+            </div>
+            <nav class="module-list">
+                <!-- Modules will be loaded here by JavaScript -->
+            </nav>
+            <div class="sidebar-footer">
+                <p><i class="fas fa-graduation-cap"></i> Learning Platform</p>
+                <small> 2024 Stock Market Hub</small>
+            </div>
+        </aside>
+        
+        <main class="content">
+            <div id="content-area">
+                <div class="welcome-screen">
+                    <i class="fas fa-chart-bar welcome-icon"></i>
+                    <h1>Welcome to Stock Market Learning Hub</h1>
+                    <p>Your comprehensive guide to financial markets</p>
+                    <div class="feature-grid">
+                        <div class="feature">
+                            <i class="fas fa-book"></i>
+                            <h3>10 Detailed Modules</h3>
+                            <p>Comprehensive learning material</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Technical Analysis</h3>
+                            <p>Learn chart patterns & indicators</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-coins"></i>
+                            <h3>Fundamental Analysis</h3>
+                            <p>Understand company valuations</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-brain"></i>
+                            <h3>Trading Psychology</h3>
+                            <p>Master market psychology</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Debug message to check if script is loading
+        console.log('Page loaded');
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+        });
+    </script>
+    <script src="./script.js"></script>
+</body>
+</html>
