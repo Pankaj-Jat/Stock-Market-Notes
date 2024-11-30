@@ -1,4 +1,4 @@
-# 📈 Stock Basics
+# 📈 Stock Market Notes
 
 > Your comprehensive guide to mastering the stock market
 > https://pankaj-jat.github.io/Stock-Market-Notes/
