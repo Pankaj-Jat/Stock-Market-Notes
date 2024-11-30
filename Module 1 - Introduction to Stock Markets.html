@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Module 1 - Introduction to Stock Markets</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="14e84369-c8cb-81f4-8cf0-d67d16efc786" class="page sans"><header><h1 class="page-title">Module 1 - Introduction to Stock Markets</h1><p class="page-description"></p></header><div class="page-body"><hr id="14e84369-c8cb-8164-b5cd-f8d35eead9b8"/><p id="14e84369-c8cb-81ad-8af1-e952d1396f94" class="">The stock market is an electronic marketplace where individuals and corporations, known as market participants, can buy and sell shares of publicly listed companies. It serves as a platform for facilitating these transactions, bringing together buyers and sellers electronically. The two main stock exchanges in India are the Bombay Stock Exchange (BSE) and the National Stock Exchange (NSE). To access the stock market, you need to open a trading account with a registered intermediary called a stockbroker.</p><hr id="14e84369-c8cb-8191-90fd-df1d4dcf6e35"/><p id="14e84369-c8cb-8101-a0d2-ed619cf10cb5" class="">The Importance of Investing and Developing a Point of View</p><p id="14e84369-c8cb-8146-a6ba-f2c9748f458f" class="">There are three primary reasons to invest: to fight inflation, create wealth, and meet your life&#x27;s financial aspirations. When choosing where to invest, individuals should consider their risk tolerance and desired return. Different asset classes offer varying levels of risk and potential return:</p><h3 id="14e84369-c8cb-811c-8e55-eb7ee828e766" class="">Asset Classes</h3><ul id="14e84369-c8cb-81c5-9372-f697a8d5522b" class="bulleted-list"><li style="list-style-type:disc"><strong>Fixed Income Instruments</strong>: These investments, such as fixed deposits, offer limited risk to the principal investment, and returns are paid as interest at regular intervals (quarterly, semi-annual, or annually). At the end of the maturity period, the capital is returned to the investor. While relatively safe, fixed income investments can lose money when adjusted for inflation. For example, a fixed deposit offering 9% interest while inflation is 10% results in a net loss of 1% per annum.</li></ul><ul id="14e84369-c8cb-81c7-bf2c-d017d39a4c3d" class="bulleted-list"><li style="list-style-type:disc"><strong>Equity</strong>: Investing in well-run companies can yield significant returns, with some achieving over 20% CAGR (Compound Annual Growth Rate) in the long term. However, identifying such opportunities requires research, effort, and patience. Equities have historically generated returns close to 14-15%, making them a good option for beating inflation over long periods. A key benefit of long-term equity investments (held for more than 365 days) is that returns are exempt from personal income tax.</li></ul><ul id="14e84369-c8cb-8108-917d-c736784edab0" class="bulleted-list"><li style="list-style-type:disc"><strong>Real Estate</strong>: This involves buying and selling commercial and non-commercial land, including sites, apartments, and commercial buildings. Income is generated through rental income and capital appreciation. Real estate investments require substantial capital and may lack liquidity, meaning it can be challenging to buy or sell quickly.</li></ul><ul id="14e84369-c8cb-811a-b666-ed12841bcad8" class="bulleted-list"><li style="list-style-type:disc"><strong>Commodities (Precious Metals)</strong>: Gold and silver are considered relatively safe investments but have historically offered lower returns compared to other asset classes.</li></ul><h3 id="14e84369-c8cb-81bd-92fb-c66460b95984" class="">Developing a Point of View</h3><p id="14e84369-c8cb-81dd-9c58-c5a8cd7c1832" class="">To be successful in the stock market, it&#x27;s crucial to develop a well-researched <strong>point of view</strong> (POV). This means forming a clear opinion on whether a stock or the market will go up or down. If you think a stock will go up (bullish), you will buy it. If you think a stock will go down (bearish), you will sell it.</p><p id="14e84369-c8cb-81c2-80da-ee376fad4c98" class=""><strong>There are four primary methods for developing a POV:</strong></p><ul id="14e84369-c8cb-8108-a146-ca5a2612917b" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Analysis (FA)</strong>: This involves researching the company&#x27;s financial statements, understanding its business model, management, and industry dynamics to assess its intrinsic value.</li></ul><ul id="14e84369-c8cb-815b-8b96-e8f845f75fa6" class="bulleted-list"><li style="list-style-type:disc"><strong>Technical Analysis (TA)</strong>: This approach analyses price charts, patterns, and volume data to identify trends and predict future price movements.</li></ul><ul id="14e84369-c8cb-81cd-a2a0-ded5575469da" class="bulleted-list"><li style="list-style-type:disc"><strong>Quantitative Analysis (QA)</strong>: This method uses statistical and mathematical models to analyse data and identify trading opportunities.</li></ul><ul id="14e84369-c8cb-81c6-ba01-f149418eb216" class="bulleted-list"><li style="list-style-type:disc"><strong>Outside Views</strong>: This refers to gathering information from various sources like news, economic data, and industry reports to gain insights and develop a perspective.</li></ul><p id="14e84369-c8cb-818c-b802-fd8acb3a09bc" class=""><strong>Developing a strong POV requires using a systematic approach to analyse the market</strong>. A robust understanding of fundamental and technical analysis can help investors formulate a point of view.</p><p id="14e84369-c8cb-81bd-88d5-d0bd2283b86e" class="">For example, a fundamental analysis-based POV might involve analysing a company&#x27;s quarterly earnings reports, growth prospects, and management guidance to decide if the stock is a buy. A technical analysis-based POV could involve identifying a breakout in the stock&#x27;s price chart, indicating a potential uptrend and a buy signal.</p><p id="14e84369-c8cb-81f4-8f8d-fc02e8ce41b5" class=""><strong>Technical analysis</strong> can help determine the entry and exit points for a trade, as well as the potential risks and rewards. It involves identifying trading opportunities based on the actions of market participants and assuming that all known and unknown information is already reflected in the stock price.</p><p id="14e84369-c8cb-81a7-818c-c51b0e7c9b6e" class="">Remember that the sources prioritize developing a point of view based on fundamental and technical analysis and do not delve deeply into quantitative analysis or outside views.</p><hr id="14e84369-c8cb-81bd-bf7e-cbf8e701a9ba"/><h2 id="14e84369-c8cb-8185-86bd-cf77ad3dff6e" class="">Stock Market Participants and the Role of SEBI</h2><p id="14e84369-c8cb-814e-aff1-cbcd48d716e4" class="">The stock market is a complex ecosystem with various participants, each playing a crucial role in facilitating trading and ensuring market integrity. Here are the key participants and their functions:</p><ul id="14e84369-c8cb-81c4-b18a-d78df780a683" class="bulleted-list"><li style="list-style-type:disc"><strong>Stock Brokers:</strong> Brokers act as intermediaries between investors and the stock exchanges, providing access to the market and enabling individuals to buy and sell shares. They also offer services such as margin trading, research reports, and trading platforms. To trade in the stock market, individuals must open a <strong>trading account</strong> with a registered broker.</li></ul><ul id="14e84369-c8cb-8138-90da-de23dcc67e2a" class="bulleted-list"><li style="list-style-type:disc"><strong>Depositories and Depository Participants:</strong> Depositories hold shares in electronic form, similar to a bank holding money in an account. In India, there are two depositories, <strong>NSDL</strong> (National Securities Depository Limited) and <strong>CDSL</strong> (Central Depository Services (India) Limited). Investors need to open a <strong>DEMAT</strong> (dematerialized) account with a <strong>Depository Participant (DP)</strong>, typically a bank or broker, to hold their shares electronically.</li></ul><ul id="14e84369-c8cb-814b-8302-c77a925e1e13" class="bulleted-list"><li style="list-style-type:disc"><strong>Banks:</strong> Banks facilitate fund transfers between trading and bank accounts, enabling investors to deposit funds for trading and receive proceeds from sales.</li></ul><ul id="14e84369-c8cb-81d6-9392-eea09b237988" class="bulleted-list"><li style="list-style-type:disc"><strong>Clearing Corporations:</strong> These entities, such as <strong>NSCCL</strong> (National Security Clearing Corporation Ltd) and <strong>ICCL</strong> (Indian Clearing Corporation), ensure guaranteed settlement of trades, minimizing counterparty risk and guaranteeing that buyers receive the shares they purchased, and sellers receive their payments.</li></ul><ul id="14e84369-c8cb-81e5-93b0-fab6883c6f16" class="bulleted-list"><li style="list-style-type:disc"><strong>Regulators:</strong> The primary regulator for the Indian stock market is <strong>SEBI</strong> (Securities and Exchange Board of India). SEBI&#x27;s role is to:<ul id="14e84369-c8cb-8196-8f94-f344eaf4f2b4" class="bulleted-list"><li style="list-style-type:circle"><strong>Ensure Fair Practices:</strong> SEBI establishes rules and regulations governing the activities of stock exchanges, brokers, and other market participants to prevent unfair practices and manipulation.</li></ul><ul id="14e84369-c8cb-8184-aea9-fb2ca697631d" class="bulleted-list"><li style="list-style-type:circle"><strong>Protect Investor Interests:</strong> SEBI safeguards the interests of retail investors, ensuring a level playing field for all participants and protecting them from fraudulent activities.</li></ul><ul id="14e84369-c8cb-8159-b5da-f2f9613e556c" class="bulleted-list"><li style="list-style-type:circle"><strong>Regulate Corporate Actions:</strong> SEBI oversees corporate actions, such as IPOs (Initial Public Offerings), to protect investors and maintain market transparency.</li></ul></li></ul><p id="14e84369-c8cb-812f-99e7-e9c70187ab42" class="">SEBI&#x27;s regulatory framework encompasses a wide range of market participants, including credit rating agencies, debenture trustees, foreign institutional investors, merchant bankers, asset management companies, and portfolio managers. Each entity operates within the legal framework prescribed by SEBI, ensuring a fair and transparent market environment.</p><hr id="14e84369-c8cb-8156-8713-fc5d69b4b0b0"/><h2 id="14e84369-c8cb-815f-b7d7-c1890c770d08" class="">Understanding Trading Instruments</h2><p id="14e84369-c8cb-815a-9170-d3172dde8bf3" class="">This response will provide a breakdown of basic concepts like long and short positions, volume, and different trading instruments such as futures and options, drawing on information from the provided sources.</p><h3 id="14e84369-c8cb-8198-93d0-f950eba2cf88" class="">Long and Short Positions</h3><ul id="14e84369-c8cb-8125-a490-e1b66d835aa9" class="bulleted-list"><li style="list-style-type:disc"><strong>Long Position</strong>: This involves buying a security with the expectation that its price will increase. When you are &quot;long&quot; on a stock, you make money when the stock price goes up and lose money when it drops. To close an existing long position, you need to sell the stock. This is called &quot;squaring off&quot; the position.</li></ul><ul id="14e84369-c8cb-81e2-aaa7-ec1a18303a98" class="bulleted-list"><li style="list-style-type:disc"><strong>Short Position</strong>: This involves selling a security with the expectation that its price will decrease. When you are &quot;short&quot; on a stock, you make money when the stock price goes down and lose money when it increases. To square off a short position, you need to buy the stock back. Shorting is generally done in the derivatives market, where you can borrow shares to sell and then buy them back later to return to the lender.</li></ul><h3 id="14e84369-c8cb-81b6-bd1a-f7fbed4dce07" class="">Volume</h3><p id="14e84369-c8cb-81fe-b05a-de22c3bc1c7d" class=""><strong>Volume represents the total number of shares traded for a particular stock on a particular day.</strong> It includes both buy and sell transactions combined. For example, if you buy 100 shares of a company and another investor sells 100 shares of the same company, the total volume for that trade is 100 shares.</p><p id="14e84369-c8cb-8144-9465-ca673575f342" class="">Volume analysis is a crucial aspect of technical analysis, as it helps confirm trends and patterns.  High volumes often indicate strong interest in a stock, while low volumes suggest weak interest. Traders typically consider high volume as a sign of confirmation for their trades. Conversely, they avoid trading on low-volume days.</p><h3 id="14e84369-c8cb-81fe-9b7e-fc7a5e9e599a" class="">Futures</h3><p id="14e84369-c8cb-81ed-8bac-f2f4f7383795" class="">Futures are standardized contracts where parties agree to buy or sell a specific quantity of an asset at a predetermined price on a specific future date. Futures contracts are traded on exchanges, unlike forward contracts, which are over-the-counter (OTC) agreements.</p><p id="14e84369-c8cb-81b8-b042-dfa06c175e3d" class=""><strong>Key features of futures contracts</strong>:</p><ul id="14e84369-c8cb-81bb-b05f-ec7badafed8e" class="bulleted-list"><li style="list-style-type:disc"><strong>Standardization</strong>: Unlike forward contracts that can be customized, futures contracts have predetermined terms, including the asset, quantity (lot size), price, and expiry date. This standardization makes them easily tradable on exchanges.</li></ul><ul id="14e84369-c8cb-8148-bf13-c8b5e13e079b" class="bulleted-list"><li style="list-style-type:disc"><strong>Margin</strong>: To enter into a futures contract, traders are required to deposit an initial margin, which is a percentage of the contract value. Margins allow traders to leverage their positions, meaning they can control a larger contract value with a relatively small amount of capital.</li></ul><ul id="14e84369-c8cb-81e6-9d7a-c9d7abfd82b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Mark to Market (M2M)</strong>: Futures contracts are marked to market daily, meaning profits and losses are settled at the end of each trading day. If the contract value moves in the trader&#x27;s favor, their account is credited with the profit. If the contract value moves against the trader, they need to deposit additional margin to cover the loss.</li></ul><ul id="14e84369-c8cb-812b-b8ab-d16635f37f31" class="bulleted-list"><li style="list-style-type:disc"><strong>Expiry</strong>: Each futures contract has a specific expiry date, after which the contract ceases to exist. Traders can either square off their positions before expiry or let the contract expire.</li></ul><h3 id="14e84369-c8cb-817d-ba67-eaa9dc01f24b" class="">Options</h3><p id="14e84369-c8cb-81d9-b04c-df3a1e822b1a" class="">Options are contracts that give the buyer the right, but not the obligation, to buy or sell an underlying asset at a predetermined price (strike price) on or before a specific date (expiry date). Options come in two main types:</p><ul id="14e84369-c8cb-81ac-9be9-d80cc4404e3f" class="bulleted-list"><li style="list-style-type:disc"><strong>Call Option</strong>: A call option gives the buyer the right to buy the underlying asset at the strike price. Buyers purchase call options when they anticipate the asset&#x27;s price will rise.</li></ul><ul id="14e84369-c8cb-812f-8168-fa5aeda48d97" class="bulleted-list"><li style="list-style-type:disc"><strong>Put Option</strong>: A put option gives the buyer the right to sell the underlying asset at the strike price. Buyers purchase put options when they expect the asset&#x27;s price to fall.</li></ul><p id="14e84369-c8cb-81ec-80da-e3cc66b606af" class="">The buyer of an option pays a premium to the seller (writer) for the right to exercise the option. The seller of an option receives the premium and is obligated to fulfill the buyer&#x27;s right to buy or sell the asset if the option is exercised.</p><p id="14e84369-c8cb-81b4-9a26-dc5f2aa7a9a8" class=""><strong>Key concepts related to options</strong>:</p><ul id="14e84369-c8cb-81de-9e99-d1a76479cdf3" class="bulleted-list"><li style="list-style-type:disc"><strong>Moneyness</strong>: This refers to the relationship between the strike price of an option and the current market price of the underlying asset. Options are classified as in-the-money (ITM), at-the-money (ATM), or out-of-the-money (OTM) based on their moneyness.</li></ul><ul id="14e84369-c8cb-8159-a4fd-cf954349e95d" class="bulleted-list"><li style="list-style-type:disc"><strong>Option Greeks</strong>: These are variables that measure the sensitivity of an option&#x27;s price to various factors, such as the underlying asset&#x27;s price, volatility, and time decay. Understanding the Greeks is essential for evaluating and managing options positions.</li></ul><ul id="14e84369-c8cb-8153-8bb0-fa8cce8ff999" class="bulleted-list"><li style="list-style-type:disc"><strong>Option Strategies</strong>: Traders can use various options strategies, such as spreads, straddles, and strangles, to manage risk and profit from different market scenarios. These strategies involve combining multiple options contracts with different strike prices and expiry dates.</li></ul><p id="14e84369-c8cb-8106-91ae-cb5d02f70602" class="">Understanding these fundamental concepts of long and short positions, volume, futures, and options is crucial for navigating the stock market and making informed trading decisions.</p><hr id="14e84369-c8cb-8116-8933-d42681d1fe49"/><h2 id="14e84369-c8cb-81f5-a9c1-e03bcf9924db" class="">Using a Trading Terminal: A Practical Guide</h2><p id="14e84369-c8cb-81ca-9159-fd508e97b7e8" class="">A trading terminal (TT) is a software program provided by a broker that acts as a gateway to stock exchanges, enabling investors to trade, track their portfolio, and monitor market movements. There are three ways to access the market: call and trade, a web browser, or using a TT.</p><h3 id="14e84369-c8cb-817f-9bf7-dbec25910df9" class="">The Login Process</h3><p id="14e84369-c8cb-81a1-99d5-c9c595672a9f" class="">Trading terminals typically require a multi-step login process to ensure account security. This involves entering a password and answering security questions.</p><h3 id="14e84369-c8cb-819f-95bf-d3d33d661d99" class="">The Market Watch</h3><p id="14e84369-c8cb-81d0-936b-db5309f43cee" class="">The market watch is a customizable list of stocks that a trader wants to monitor and potentially trade. To add a stock to the market watch, the user can typically search for the stock&#x27;s symbol and select it from a dropdown list. The market watch usually displays information such as:</p><ul id="14e84369-c8cb-814a-a3f9-e90152f6c092" class="bulleted-list"><li style="list-style-type:disc"><strong>Last Traded Price (LTP)</strong>: The most recent price at which the stock was traded.</li></ul><ul id="14e84369-c8cb-8127-8b82-de6f8ab1940a" class="bulleted-list"><li style="list-style-type:disc"><strong>Percentage Change</strong>: The percentage change in the LTP compared to the previous day&#x27;s closing price.</li></ul><ul id="14e84369-c8cb-813d-8acb-c9c06ac2ea70" class="bulleted-list"><li style="list-style-type:disc"><strong>Previous Day Close</strong>: The price at which the stock closed on the previous trading day.</li></ul><ul id="14e84369-c8cb-8186-a4d5-cadb715a756e" class="bulleted-list"><li style="list-style-type:disc"><strong>OHLC</strong>: The opening, high, low, and closing prices for the current trading day, providing a sense of the stock&#x27;s trading range.</li></ul><ul id="14e84369-c8cb-81c4-8186-efe6713c4a84" class="bulleted-list"><li style="list-style-type:disc"><strong>Volumes</strong>: The number of shares traded during a particular time period, indicating market interest and liquidity.</li></ul><p id="14e84369-c8cb-8167-9176-e6d26a08002d" class="">Traders can access more detailed information, including <strong>bid and ask prices</strong>, through a <strong>market depth</strong> window or snap quote.</p><h3 id="14e84369-c8cb-8122-938e-de4a39dd4905" class="">Buying a Stock Through the Trading Terminal</h3><p id="14e84369-c8cb-8111-967d-c8c64f2c8855" class="">To buy a stock, a trader first needs to invoke a buy order form. On the buy order form, the trader needs to specify:</p><ul id="14e84369-c8cb-8194-b596-c0ebcec801ac" class="bulleted-list"><li style="list-style-type:disc"><strong>Exchange:</strong> The exchange where the stock is listed (e.g., NSE or BSE).</li></ul><ul id="14e84369-c8cb-81ca-8246-f080d30a8b5d" class="bulleted-list"><li style="list-style-type:disc"><strong>Order Type</strong>:<ul id="14e84369-c8cb-81a8-b04c-ef384aa20427" class="bulleted-list"><li style="list-style-type:circle"><strong>Limit Order</strong>: This order type allows the trader to set a specific price at which they want to buy the stock. The order will only be executed if the stock price reaches the specified limit.</li></ul><ul id="14e84369-c8cb-814a-a4d4-ff7796149bc7" class="bulleted-list"><li style="list-style-type:circle"><strong>Market Order</strong>: This order type instructs the broker to buy the stock at the best available price in the market. This ensures a quick execution but does not guarantee a specific price.</li></ul><ul id="14e84369-c8cb-8196-b066-f50d2650149c" class="bulleted-list"><li style="list-style-type:circle"><strong>SL (Stop-Loss) Order</strong>: This order type sets a price below the current market price for a buy order. If the stock price falls to the stop-loss level, the order is triggered and converted into a market order, potentially limiting the trader&#x27;s losses.</li></ul><ul id="14e84369-c8cb-814c-9305-dae5301f4a4e" class="bulleted-list"><li style="list-style-type:circle"><strong>SL-Market Order</strong>: This is a stop-loss order that is executed as a market order when the stop-loss price is triggered, ensuring a quick execution but not guaranteeing a specific price.</li></ul></li></ul><ul id="14e84369-c8cb-817f-a13a-d5e31757ba69" class="bulleted-list"><li style="list-style-type:disc"><strong>Quantity</strong>: The number of shares the trader wants to buy.</li></ul><ul id="14e84369-c8cb-81a2-9526-dea0c619e3f2" class="bulleted-list"><li style="list-style-type:disc"><strong>Product Type</strong>: The product type determines the duration of the trade:<ul id="14e84369-c8cb-8110-8b41-de8c2252c251" class="bulleted-list"><li style="list-style-type:circle"><strong>CNC (Cash and Carry)</strong>: Used for buying stocks with the intention of holding them for multiple days.</li></ul><ul id="14e84369-c8cb-81a2-9f45-f8b583de73ac" class="bulleted-list"><li style="list-style-type:circle"><strong>NRML (Normal)</strong> or <strong>MIS (Margin Intraday Square-off)</strong>: Used for intraday trading, where positions are squared off within the same trading day.</li></ul></li></ul><h3 id="14e84369-c8cb-8146-a5c1-e2f1114b54e7" class="">The Order Book and Trade Book</h3><p id="14e84369-c8cb-810e-8495-e6aa51f3515d" class="">The order book and trade book are essential features of a trading terminal that allow traders to track their orders and trades.</p><ul id="14e84369-c8cb-8182-b0e8-f53125ad9005" class="bulleted-list"><li style="list-style-type:disc"><strong>Order Book</strong>: Lists all orders sent to the exchange, including pending, completed, and rejected orders. Traders can use the order book to:<ul id="14e84369-c8cb-81d8-9738-ef9467327bb5" class="bulleted-list"><li style="list-style-type:circle">Verify order details such as quantity, price, order type, and product type.</li></ul><ul id="14e84369-c8cb-8183-aebe-c506e1aab217" class="bulleted-list"><li style="list-style-type:circle">Modify pending orders.</li></ul><ul id="14e84369-c8cb-8123-ab24-f360ece8599e" class="bulleted-list"><li style="list-style-type:circle">Check the status of orders.</li></ul></li></ul><ul id="14e84369-c8cb-8192-a4b1-e184eb7448dc" class="bulleted-list"><li style="list-style-type:disc"><strong>Trade Book</strong>: Displays all executed trades for the day, providing confirmation of the trades and their details, including the trade price and exchange order number.</li></ul><h3 id="14e84369-c8cb-8192-8e53-d75126eb2d0f" class="">The Bid and Ask Price</h3><ul id="14e84369-c8cb-812f-95c5-d884abec9eba" class="bulleted-list"><li style="list-style-type:disc"><strong>Bid Price</strong>: The highest price a buyer is willing to pay for a stock at a given time.</li></ul><ul id="14e84369-c8cb-8175-ad53-cca3910c0ed5" class="bulleted-list"><li style="list-style-type:disc"><strong>Ask Price</strong>: The lowest price a seller is willing to accept for a stock at a given time.</li></ul><p id="14e84369-c8cb-817d-92a9-d5d68b7f7f83" class="">The difference between the bid and ask price is called the <strong>bid-ask spread</strong>.</p><hr id="14e84369-c8cb-812b-a87d-d39545c7d7e8"/><h2 id="14e84369-c8cb-8148-aa2a-d6256de64626" class="">Clearing and Settlement Process in India</h2><p id="14e84369-c8cb-811a-92b4-feb0047cb941" class=""><strong>The process starts on the day an investor places an order to buy a stock, referred to as &quot;T Day.&quot;</strong> The investor&#x27;s broker checks for sufficient funds in the trading account to cover the purchase price and associated charges, including brokerage, security transaction charges, service tax, and SEBI charges. The broker then transmits the order to the stock exchange, which matches the buyer with a seller.</p><p id="14e84369-c8cb-8197-8cf7-e04d37fb4ef6" class=""><strong>On &quot;T+1 Day&quot; (the day after the trade),</strong> the investor can technically sell the stock even though it has not yet been credited to their Demat account, a practice called &quot;Buy Today, Sell Tomorrow&quot; (BTST) or &quot;Acquire Today, Sell Tomorrow&quot; (ATST). However, this carries a risk, particularly for less liquid stocks, as the investor is essentially selling shares they don&#x27;t own yet. <strong>Behind the scenes on T+1, the exchange collects funds from the buyer and charges, such as exchange transaction charges and security transaction tax.</strong></p><p id="14e84369-c8cb-81a7-a0ec-dfb8e6066a20" class=""><strong>The actual transfer of shares occurs on &quot;T+2 Day&quot; (two days after the trade).</strong> Around 11 AM, shares are debited from the seller&#x27;s Demat account and credited to the buyer&#x27;s broker. By the end of the day, the broker credits the shares to the investor&#x27;s Demat account.  <strong>Simultaneously, the funds from the buyer are credited to the seller.</strong></p><p id="14e84369-c8cb-8125-bd0b-e1335b0fda84" class=""><strong>Therefore, shares bought on T Day will be available in the investor&#x27;s Demat account for trading on T+3 Day.</strong></p><p id="14e84369-c8cb-8128-9a8b-e92945e11925" class=""><strong>The selling process follows a similar timeline.</strong> On T Day, the investor places a sell order, and the shares in their Demat account are immediately blocked. By T+2 Day, the blocked shares are transferred to the buyer, and the sale proceeds, after deducting charges, are credited to the investor&#x27;s trading account.</p><p id="14e84369-c8cb-81b8-905d-cb9c61508681" class=""><strong>Key takeaways from this explanation of the clearing and settlement process in India</strong>:</p><ul id="14e84369-c8cb-8133-9687-f487446523c1" class="bulleted-list"><li style="list-style-type:disc">Trades settle on a T+2 basis, meaning it takes two working days for shares to be credited to the buyer&#x27;s Demat account and funds to be credited to the seller&#x27;s account.</li></ul><ul id="14e84369-c8cb-8145-9754-fe28fdc5fc47" class="bulleted-list"><li style="list-style-type:disc">Contract notes, which detail each transaction and charges, are generated by brokers and sent to investors by the end of T Day.</li></ul><ul id="14e84369-c8cb-81a1-a4e8-e6947ab88d8f" class="bulleted-list"><li style="list-style-type:disc">While BTST/ATST trades are possible, they involve risk as shares are sold before being delivered to the seller&#x27;s Demat account.</li></ul><p id="14e84369-c8cb-818c-8392-e146d0eaec4e" class="">The sources focus on the Indian stock market. Settlement timelines and practices may vary in other markets.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
