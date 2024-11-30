@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Module 8: Currency and Commodity Futures</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="14e84369-c8cb-81ea-91d9-d1e8aa475b16" class="page sans"><header><h1 class="page-title">Module 8: Currency and Commodity Futures</h1><p class="page-description"></p></header><div class="page-body"><h2 id="14e84369-c8cb-8119-b6bc-efd12d766b2c" class="">Currency Trading Basics</h2><p id="14e84369-c8cb-812d-b7d4-ec7c8fa76b0b" class="">This section introduces the world of currencies and currency trading, covering popular currency pairs traded in India and globally. It explains contract specifications, fundamental factors affecting currencies, the application of technical analysis, and testing for seasonality.</p><h3 id="14e84369-c8cb-8196-b15c-cb1912395f3c" class="">Introduction to Currency Trading</h3><p id="14e84369-c8cb-8170-93a2-cd95f8a4bec2" class="">Currency trading, also known as foreign exchange (Forex) trading, involves buying and selling currencies to profit from fluctuations in their exchange rates. It is a global market with a daily trading volume exceeding <strong>$5.4 trillion</strong> as of April 2013, according to the Bank of International Settlement (BIS). The market operates 24 hours a day, six days a week, chasing the sun as trading activity shifts across different time zones.</p><h3 id="14e84369-c8cb-813a-9761-c5ed108f1db7" class="">Currency Pairs and Quotes</h3><p id="14e84369-c8cb-815d-9999-f455e11bde5a" class="">Currencies are traded in pairs, with the value of one currency expressed in terms of another. The standard format for quoting currency pairs is:</p><p id="14e84369-c8cb-8100-bd7a-e4545fc6fe77" class="">Base Currency / Quotation Currency = Value</p><p id="14e84369-c8cb-81b0-b1ff-da2d635d7dea" class="">For example, in the USD/INR pair, USD is the base currency, INR is the quotation currency, and the value represents the number of Indian rupees required to buy one US dollar. Some popular currency pairs traded globally include:</p><ul id="14e84369-c8cb-81cf-a6e4-f3b47526ca4a" class="bulleted-list"><li style="list-style-type:disc">EUR/USD</li></ul><ul id="14e84369-c8cb-813a-98e4-e6b035ef6832" class="bulleted-list"><li style="list-style-type:disc">USD/JPY</li></ul><ul id="14e84369-c8cb-81bf-88a7-c3c7c57f4ec8" class="bulleted-list"><li style="list-style-type:disc">GBP/USD</li></ul><ul id="14e84369-c8cb-813f-b46d-db298cf8bb79" class="bulleted-list"><li style="list-style-type:disc">AUD/USD</li></ul><ul id="14e84369-c8cb-81c0-a6ec-fff0800ebb62" class="bulleted-list"><li style="list-style-type:disc">USD/CAD</li></ul><ul id="14e84369-c8cb-815e-91cb-d68f1f812f4e" class="bulleted-list"><li style="list-style-type:disc">USD/CHF</li></ul><p id="14e84369-c8cb-8189-8d7f-ca640ee4df21" class="">In India, besides USD/INR, other actively traded currency pairs include:</p><ul id="14e84369-c8cb-81b1-82d4-edcfe8d706e8" class="bulleted-list"><li style="list-style-type:disc">EUR/INR</li></ul><ul id="14e84369-c8cb-81b2-8eaa-de823bc65762" class="bulleted-list"><li style="list-style-type:disc">GBP/INR</li></ul><ul id="14e84369-c8cb-815f-8227-d41f8315e17b" class="bulleted-list"><li style="list-style-type:disc">JPY/INR</li></ul><h3 id="14e84369-c8cb-81b3-a215-d4e1e60d0a9e" class="">Contract Specifications</h3><p id="14e84369-c8cb-815a-b3f8-e0350ee9520d" class="">Currency trading in India is primarily conducted on exchanges like the National Stock Exchange (NSE) and the Multi Commodity Exchange (MCX).  The contracts are standardized, with pre-defined parameters such as:</p><p id="14e84369-c8cb-819e-9162-daa76a8f3c60" class=""><strong>1. Lot Size:</strong> The minimum quantity of currency that can be traded. Lot sizes vary across currency pairs. For example, the USD/INR futures contract has a lot size of $1,000.</p><p id="14e84369-c8cb-8146-a4d0-effbfecc3e7c" class=""><strong>2. Expiry:</strong> The date on which the contract expires. Currency futures contracts in India typically expire two days before the last working day of the month.</p><p id="14e84369-c8cb-8149-81bd-f3759086374f" class=""><strong>3. Tick Size:</strong> The minimum price movement allowed for the contract. For USD/INR, the tick size is 0.0025 rupees.</p><p id="14e84369-c8cb-81f2-866f-dead6038f900" class=""><strong>4. Margins:</strong> The initial deposit required to initiate a trade. Margins for currency futures are typically low, ranging between 2.25% to 2.5% of the contract value.</p><h3 id="14e84369-c8cb-81c7-9439-ddc017d3e726" class="">Fundamental Factors Affecting Currencies</h3><p id="14e84369-c8cb-81cb-b480-dce46ae826c7" class="">The exchange rate of a currency pair is influenced by various economic and political factors. Some key fundamental factors to consider are:</p><p id="14e84369-c8cb-8166-b294-c9045be00614" class=""><strong>1. Trade Deficit:</strong>  A country with a high trade deficit, importing more than it exports, may experience a weakening of its currency.</p><p id="14e84369-c8cb-81e9-8449-e155e6b5697a" class=""><strong>2. Interest Rates:</strong> Higher interest rates tend to attract foreign investment, strengthening the domestic currency. Monetary policy announcements by central banks can significantly impact currency rates.</p><p id="14e84369-c8cb-8125-a216-ffbd9a91c943" class=""><strong>3. GDP Growth Rate:</strong>  A strong GDP growth rate indicates a healthy economy, generally leading to a stronger currency.</p><p id="14e84369-c8cb-8175-903e-cddfa56d4715" class=""><strong>4. Inflation:</strong> Higher inflation may weaken a currency&#x27;s purchasing power, resulting in depreciation.</p><p id="14e84369-c8cb-819f-875a-d5eeb2dd6235" class=""><strong>5. Political Stability:</strong> Political instability and uncertainty can negatively affect a country&#x27;s currency.</p><p id="14e84369-c8cb-8142-8092-d45ebfd4e95a" class=""><strong>6. Global Events:</strong> Major global events, like Brexit, can significantly impact currency markets.</p><h3 id="14e84369-c8cb-81f0-b7c9-d16dbacbde73" class="">Technical Analysis in Currency Trading</h3><p id="14e84369-c8cb-8183-8975-fcc3f39b9421" class="">Technical analysis involves analyzing price charts and patterns to identify potential trading opportunities. Many traders use technical analysis for currency trading as it focuses on price action, which is believed to reflect all relevant fundamental information. Some common technical indicators used in currency trading include moving averages, support and resistance levels, and candlestick patterns. The sources provide examples of using technical analysis to identify trading signals in the USD/INR and GBP/INR pairs.</p><h3 id="14e84369-c8cb-8115-a92c-e2ef26526dc4" class="">Testing for Seasonality</h3><p id="14e84369-c8cb-810f-9c6b-cf2f4bfa000c" class="">Seasonality in currency trading refers to recurring patterns in price movements at specific times of the year. The sources conducted a test for seasonality in the USD/INR pair using historical data. The results showed <strong>no statistically significant evidence of seasonality on a weekly or monthly basis.</strong> This suggests that expecting predictable price movements based on time of year may not be a reliable trading strategy for this particular pair.</p><hr id="14e84369-c8cb-810a-8f33-c98bb4372fd1"/><h2 id="14e84369-c8cb-8108-af72-d6a9c0ac1b9e" class="">Understanding Commodities</h2><p id="14e84369-c8cb-81b2-9cd3-c0988e45172d" class="">This section introduces commodities trading, covering the characteristics of different commodities like Copper, Aluminum, Lead, Nickel, Cardamom, Mentha Oil, and Natural Gas. It discusses contract specifications, trading volumes, and basic fundamental factors affecting each commodity.</p><h3 id="14e84369-c8cb-8112-b7f2-cbea24dffbfe" class="">Copper</h3><ul id="14e84369-c8cb-8198-bfbb-e351047507a8" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics:</strong> Copper is a base metal, meaning it is not precious like gold or silver. It is the third most consumed metal after steel and aluminum, widely used in electrical wiring, plumbing, and industrial machinery.</li></ul><ul id="14e84369-c8cb-8198-b7cc-eb930008b53c" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong><ul id="14e84369-c8cb-81f2-8581-c701339968fc" class="bulleted-list"><li style="list-style-type:circle">Price Quote: Per kilogram</li></ul><ul id="14e84369-c8cb-8119-8009-d4fc82df06b9" class="bulleted-list"><li style="list-style-type:circle"><strong>Big Copper Contract:</strong><ul id="14e84369-c8cb-81bf-9cba-c18ac0e98ee8" class="bulleted-list"><li style="list-style-type:square">Lot Size: 1 metric ton (1,000 kgs)</li></ul><ul id="14e84369-c8cb-8158-8159-f4b8fd70fde9" class="bulleted-list"><li style="list-style-type:square">Tick Size: Rs. 0.05</li></ul><ul id="14e84369-c8cb-8185-ba2d-c81bacb84e78" class="bulleted-list"><li style="list-style-type:square">P&amp;L per Tick: Rs. 50/-</li></ul><ul id="14e84369-c8cb-818f-98ce-f8a23e606284" class="bulleted-list"><li style="list-style-type:square">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-8105-9d09-f64c2fa5f992" class="bulleted-list"><li style="list-style-type:square">Delivery Units: 10 MT</li></ul></li></ul><ul id="14e84369-c8cb-8175-a711-fd312383fc49" class="bulleted-list"><li style="list-style-type:circle"><strong>Copper Mini Contract:</strong><ul id="14e84369-c8cb-8106-b27c-ecef6e9a88dd" class="bulleted-list"><li style="list-style-type:square">Lot Size: 250 Kgs</li></ul><ul id="14e84369-c8cb-81b9-83c6-cff40b414fdd" class="bulleted-list"><li style="list-style-type:square">Tick Size: Rs. 0.05</li></ul><ul id="14e84369-c8cb-816e-8769-f209663a3307" class="bulleted-list"><li style="list-style-type:square">P&amp;L per Tick: Rs. 12.5/-</li></ul><ul id="14e84369-c8cb-81ea-8a37-c90d14a49788" class="bulleted-list"><li style="list-style-type:square">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-8103-ad39-f33a1d30cc7e" class="bulleted-list"><li style="list-style-type:square">Delivery Units: 10 MT</li></ul></li></ul></li></ul><ul id="14e84369-c8cb-8114-ac48-cb9c675bde33" class="bulleted-list"><li style="list-style-type:disc"><strong>Trading Volumes:</strong> Copper is a highly traded commodity on MCX, with daily average traded value of approximately INR 2,050 crores across an average of 55,000 lots.</li></ul><ul id="14e84369-c8cb-81aa-9edc-d8d76df9c097" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Factors:</strong><ul id="14e84369-c8cb-813f-b8c9-e5f847412d06" class="bulleted-list"><li style="list-style-type:circle"><strong>Global Demand and Supply:</strong> In 2015, the global demand for refined copper was 24 million tons, with half of the demand coming from China and Japan. The supply has been higher than the demand, contributing to a decline in prices over the last few years.</li></ul><ul id="14e84369-c8cb-8131-b8f9-de0ce81bec1c" class="bulleted-list"><li style="list-style-type:circle"><strong>London Metal Exchange (LME) Prices:</strong> LME prices act as a reference price for copper.</li></ul></li></ul><h3 id="14e84369-c8cb-817a-876d-da43851e754c" class="">Aluminum</h3><ul id="14e84369-c8cb-8189-a643-e9501345464f" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics:</strong> Aluminum is a lightweight and versatile metal, found in abundance (next only to silicon and oxygen). It is used in various applications, including packaging, transportation, construction, and electrical transmission.</li></ul><ul id="14e84369-c8cb-8115-9d4f-e94297b99dbc" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong><ul id="14e84369-c8cb-81b7-9735-d23155a571ff" class="bulleted-list"><li style="list-style-type:circle">Price Quote: Per kilogram</li></ul><ul id="14e84369-c8cb-81a0-90b9-f79d5cffad2a" class="bulleted-list"><li style="list-style-type:circle"><strong>Big Aluminum Contract:</strong><ul id="14e84369-c8cb-818d-aa51-f88acb1b3fd8" class="bulleted-list"><li style="list-style-type:square">Lot Size: 5 metric tons (5,000 kgs)</li></ul><ul id="14e84369-c8cb-81aa-8860-d1f446d86ab7" class="bulleted-list"><li style="list-style-type:square">Tick Size: Rs. 0.05</li></ul><ul id="14e84369-c8cb-81d4-9c70-f4574eb26132" class="bulleted-list"><li style="list-style-type:square">P&amp;L per Tick: Rs. 250/-</li></ul><ul id="14e84369-c8cb-81a4-9500-cfadcf2e7ff7" class="bulleted-list"><li style="list-style-type:square">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-814a-8ca1-fc5db0626f5f" class="bulleted-list"><li style="list-style-type:square">Delivery Units: 10 MT</li></ul></li></ul><ul id="14e84369-c8cb-8183-ba7b-e95223e25bf0" class="bulleted-list"><li style="list-style-type:circle"><strong>Aluminum Mini Contract:</strong> The sources do not provide specific details on the Aluminium Mini contract.</li></ul></li></ul><ul id="14e84369-c8cb-8142-aec2-e311c8343459" class="bulleted-list"><li style="list-style-type:disc"><strong>Trading Volumes:</strong> The daily average traded value of big aluminum on MCX is approximately INR 375 crores, sometimes reaching over INR 500 crores on active days.</li></ul><ul id="14e84369-c8cb-8168-938a-d522c7f58f30" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Factors:</strong><ul id="14e84369-c8cb-81d0-8c95-e23960f491f9" class="bulleted-list"><li style="list-style-type:circle"><strong>Global Production and Demand:</strong> In 2015, the global production of aluminum was 56 million tonnes, representing a 4% growth from the previous year and a CAGR of 6% over the past eight years. The demand has been matching global production, contributing to a decline in prices over the years.</li></ul><ul id="14e84369-c8cb-81b9-a3cf-eb33f0369734" class="bulleted-list"><li style="list-style-type:circle"><strong>Indian Demand:</strong> The demand for aluminum in India is approximately 2 million tonnes, mostly met through imports.</li></ul><ul id="14e84369-c8cb-816c-812a-e39d424bb87b" class="bulleted-list"><li style="list-style-type:circle"><strong>London Metal Exchange (LME) Prices:</strong> LME prices serve as a reference price for aluminum.</li></ul></li></ul><h3 id="14e84369-c8cb-81bc-be12-c66305ec9984" class="">Lead</h3><ul id="14e84369-c8cb-8115-a633-c29c7bf0c194" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics:</strong> Lead is a dense and malleable metal, primarily used in lead-acid batteries, construction materials, and ammunition.</li></ul><ul id="14e84369-c8cb-81fb-b104-da853854e7f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong><ul id="14e84369-c8cb-8137-8af7-f7e77977e1cb" class="bulleted-list"><li style="list-style-type:circle">Price Quote: Per kilogram</li></ul><ul id="14e84369-c8cb-81b6-8297-d0fead8b43f4" class="bulleted-list"><li style="list-style-type:circle"><strong>Big Lead Contract:</strong><ul id="14e84369-c8cb-81c4-a438-fe7bd9f5d424" class="bulleted-list"><li style="list-style-type:square">Lot Size: 5 metric tons (5,000 kgs)</li></ul><ul id="14e84369-c8cb-817c-adee-fa6f2ca706fa" class="bulleted-list"><li style="list-style-type:square">Tick Size: Rs. 0.05</li></ul><ul id="14e84369-c8cb-8107-b7a0-f47757c14469" class="bulleted-list"><li style="list-style-type:square">P&amp;L per Tick: Rs. 250/-</li></ul><ul id="14e84369-c8cb-819f-8203-d97b191ba447" class="bulleted-list"><li style="list-style-type:square">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-81c6-958a-cc847ccbd0d3" class="bulleted-list"><li style="list-style-type:square">Delivery Units: 10 MT</li></ul></li></ul><ul id="14e84369-c8cb-81e7-a570-d3841d2c46f8" class="bulleted-list"><li style="list-style-type:circle"><strong>Lead Mini Contract:</strong><ul id="14e84369-c8cb-81c6-a419-cf1566eae4fd" class="bulleted-list"><li style="list-style-type:square">Lot Size: 1 metric ton (1,000 kgs)</li></ul><ul id="14e84369-c8cb-81b4-9c73-d99cedfde831" class="bulleted-list"><li style="list-style-type:square">Tick Size: Rs. 0.05</li></ul><ul id="14e84369-c8cb-8134-84d8-d378d4cab4ae" class="bulleted-list"><li style="list-style-type:square">P&amp;L per Tick: Rs. 50/-</li></ul><ul id="14e84369-c8cb-81d8-8f0e-e68bcb84dd09" class="bulleted-list"><li style="list-style-type:square">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-816b-8dcd-fe3296df26b7" class="bulleted-list"><li style="list-style-type:square">Delivery Units: 10 MT</li></ul></li></ul></li></ul><ul id="14e84369-c8cb-8110-8862-fedf838aafdb" class="bulleted-list"><li style="list-style-type:disc"><strong>Trading Volumes:</strong> The sources do not specify the trading volumes for lead.</li></ul><ul id="14e84369-c8cb-813a-85b6-c5a0f5ec90a1" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Factors:</strong><ul id="14e84369-c8cb-81b6-b256-ec844f2ff757" class="bulleted-list"><li style="list-style-type:circle"><strong>Demand and Supply:</strong> The demand-supply for lead has remained stable in recent years.</li></ul></li></ul><h3 id="14e84369-c8cb-8156-bebb-ffbf50957be5" class="">Nickel</h3><ul id="14e84369-c8cb-815e-88bf-f398d95b437e" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics:</strong> Nickel is a silvery-white metal, highly resistant to corrosion. It is primarily used in stainless steel production, batteries, and other alloys.</li></ul><ul id="14e84369-c8cb-8181-a4e4-ca6295349851" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong><ul id="14e84369-c8cb-81f5-b53a-f947c9265d8b" class="bulleted-list"><li style="list-style-type:circle">Price Quote: Per kilogram</li></ul><ul id="14e84369-c8cb-813d-a3f9-d56bf0e2d39a" class="bulleted-list"><li style="list-style-type:circle"><strong>Big Nickel Contract:</strong><ul id="14e84369-c8cb-810d-a757-e76b7ff277d3" class="bulleted-list"><li style="list-style-type:square">Lot Size: 250 Kgs</li></ul><ul id="14e84369-c8cb-813d-848d-c40792caa57e" class="bulleted-list"><li style="list-style-type:square">Tick Size: Rs. 0.10</li></ul><ul id="14e84369-c8cb-8113-890f-ed1df22304df" class="bulleted-list"><li style="list-style-type:square">P&amp;L per Tick: Rs. 25/-</li></ul><ul id="14e84369-c8cb-81c4-b5b8-f7d01bf002fd" class="bulleted-list"><li style="list-style-type:square">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-81aa-858b-d7eb53d82923" class="bulleted-list"><li style="list-style-type:square">Delivery Units: 3 MT</li></ul></li></ul><ul id="14e84369-c8cb-8150-9623-e520b66b63c7" class="bulleted-list"><li style="list-style-type:circle"><strong>Nickel Mini Contract:</strong><ul id="14e84369-c8cb-81f3-8ad1-ccb93c441c68" class="bulleted-list"><li style="list-style-type:square">Lot Size: 100 kgs</li></ul><ul id="14e84369-c8cb-814e-bc31-dfc7748af801" class="bulleted-list"><li style="list-style-type:square">Tick Size: Rs. 0.10</li></ul><ul id="14e84369-c8cb-81e7-888d-d9c7fc71532a" class="bulleted-list"><li style="list-style-type:square">P&amp;L per Tick: Rs. 10/-</li></ul><ul id="14e84369-c8cb-8163-9912-e14faf9cab11" class="bulleted-list"><li style="list-style-type:square">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-819d-a448-cb269e7721b9" class="bulleted-list"><li style="list-style-type:square">Delivery Units: 3 MT</li></ul></li></ul></li></ul><ul id="14e84369-c8cb-81dc-9736-e53c2fa84fa3" class="bulleted-list"><li style="list-style-type:disc"><strong>Trading Volumes:</strong> The sources do not provide information on the trading volumes for nickel.</li></ul><ul id="14e84369-c8cb-815f-a754-cd65667bbd55" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Factors:</strong><ul id="14e84369-c8cb-81bd-b077-d23aad24c141" class="bulleted-list"><li style="list-style-type:circle"><strong>Production and Demand:</strong> Nickel production has outstripped its demand, leading to a decline in prices over the years.</li></ul></li></ul><h3 id="14e84369-c8cb-818f-aa98-dc842b1dec78" class="">Cardamom</h3><ul id="14e84369-c8cb-8133-bbbc-f73508adcc18" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics:</strong> Cardamom is a spice derived from the seed pods of various plants in the ginger family. It is primarily used in Indian cuisine and has applications in skin and dental care.</li></ul><ul id="14e84369-c8cb-81f6-8d62-c0c3c2af4602" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong><ul id="14e84369-c8cb-8141-9095-f2ee2904a054" class="bulleted-list"><li style="list-style-type:circle">Price Quote: Rs. per 100 grams</li></ul><ul id="14e84369-c8cb-817c-ba5b-e723a12f5613" class="bulleted-list"><li style="list-style-type:circle">Lot Size: 500 kgs</li></ul><ul id="14e84369-c8cb-81b1-a96a-c349b1054ded" class="bulleted-list"><li style="list-style-type:circle">Tick Size: Rs. 1/-</li></ul><ul id="14e84369-c8cb-8119-849a-c05d378efb68" class="bulleted-list"><li style="list-style-type:circle">P&amp;L per Tick: Rs. 50/-</li></ul><ul id="14e84369-c8cb-8158-b3c2-ceb299ea7c4c" class="bulleted-list"><li style="list-style-type:circle">Expiry: 15th of every month</li></ul><ul id="14e84369-c8cb-8150-9330-f3b74e76ef60" class="bulleted-list"><li style="list-style-type:circle">Delivery Units: 100 kgs</li></ul></li></ul><ul id="14e84369-c8cb-810c-a468-e60ca04b8b12" class="bulleted-list"><li style="list-style-type:disc"><strong>Trading Volumes:</strong> The sources do not specify the trading volumes for cardamom.</li></ul><ul id="14e84369-c8cb-8168-a6b3-d14d407c130e" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Factors:</strong><ul id="14e84369-c8cb-81e0-a030-d97297386dbe" class="bulleted-list"><li style="list-style-type:circle"><strong>Monsoons:</strong> The southwest monsoons play a crucial role in cardamom production.</li></ul><ul id="14e84369-c8cb-8127-adda-d56877ed825d" class="bulleted-list"><li style="list-style-type:circle"><strong>Quality of Harvest:</strong> Factors like flavor, color, size, and aroma of the harvest influence prices.</li></ul><ul id="14e84369-c8cb-8143-b4f4-e34df2796123" class="bulleted-list"><li style="list-style-type:circle"><strong>Production Parameters:</strong> Insect attacks on plantations can affect supply.</li></ul><ul id="14e84369-c8cb-81b8-8af6-dd8e39bae520" class="bulleted-list"><li style="list-style-type:circle"><strong>Stock Availability:</strong> Cardamom stock levels in India and Guatemala (a major producer) influence prices.</li></ul><ul id="14e84369-c8cb-81e7-b2af-c0c791b5d593" class="bulleted-list"><li style="list-style-type:circle"><strong>Domestic Consumption Patterns:</strong> Although relatively steady over the years, changes in domestic consumption can impact demand.</li></ul></li></ul><h3 id="14e84369-c8cb-8113-9d52-cb3984859042" class="">Mentha Oil</h3><ul id="14e84369-c8cb-81d8-9a21-f2ede9781fc0" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics:</strong> Mentha oil is distilled and filtered from Mentha leaves, used in Indian cooking and various medicinal and industrial applications.</li></ul><ul id="14e84369-c8cb-8124-abff-dda2adc0b766" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong><ul id="14e84369-c8cb-81bb-b8ae-d418609367cc" class="bulleted-list"><li style="list-style-type:circle">Price Quote: Per kilogram</li></ul><ul id="14e84369-c8cb-813f-adc5-fce98006bb88" class="bulleted-list"><li style="list-style-type:circle">Lot Size: 360 kgs</li></ul><ul id="14e84369-c8cb-81b6-9372-da666a6bf580" class="bulleted-list"><li style="list-style-type:circle">Tick Size: Rs. 0.10</li></ul><ul id="14e84369-c8cb-819a-ad16-ecb8ac03619b" class="bulleted-list"><li style="list-style-type:circle">P&amp;L per Tick: Rs. 36/-</li></ul><ul id="14e84369-c8cb-81d5-9b1a-d3a29e2dd269" class="bulleted-list"><li style="list-style-type:circle">Expiry: Last day of the month</li></ul><ul id="14e84369-c8cb-8182-ad6f-ceed27567495" class="bulleted-list"><li style="list-style-type:circle">Delivery Units: 360 kgs</li></ul></li></ul><ul id="14e84369-c8cb-8169-ae7a-cf320757ec66" class="bulleted-list"><li style="list-style-type:disc"><strong>Trading Volumes:</strong> The sources do not mention specific trading volumes for Mentha oil.</li></ul><ul id="14e84369-c8cb-81db-8123-f3c841b81b29" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Factors:</strong><ul id="14e84369-c8cb-8160-8bbf-cfcc40ba2848" class="bulleted-list"><li style="list-style-type:circle"><strong>Global Demand:</strong> Global demand for Mentha oil significantly influences the contract.</li></ul></li></ul><h3 id="14e84369-c8cb-81ea-8a46-cc795dd5f2f8" class="">Natural Gas</h3><ul id="14e84369-c8cb-8134-bf7d-cf090166dab1" class="bulleted-list"><li style="list-style-type:disc"><strong>Characteristics:</strong> Natural gas is a naturally occurring, non-renewable hydrocarbon gas mixture, primarily consisting of methane. It is a fossil fuel used as an energy source for various purposes, including electricity generation, heating, and cooking.</li></ul><ul id="14e84369-c8cb-812e-973d-de1c1c8816e4" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong><ul id="14e84369-c8cb-81c2-9a91-e90ee8618908" class="bulleted-list"><li style="list-style-type:circle">Price Quote: Rupee per Million British Thermal Unit (mmBtu)</li></ul><ul id="14e84369-c8cb-815b-a9d8-e6a166b0583d" class="bulleted-list"><li style="list-style-type:circle">Lot Size: 1250 mmBtu</li></ul><ul id="14e84369-c8cb-8182-9dd0-ee48215bf65f" class="bulleted-list"><li style="list-style-type:circle">Tick Size: Rs. 0.10</li></ul><ul id="14e84369-c8cb-81f6-8910-dcb1411f0580" class="bulleted-list"><li style="list-style-type:circle">P&amp;L per Tick: Rs. 125/-</li></ul><ul id="14e84369-c8cb-81e5-9537-fa14d2fb4a9b" class="bulleted-list"><li style="list-style-type:circle">Expiry: 25th of every month</li></ul><ul id="14e84369-c8cb-81b1-837b-c1c794f63538" class="bulleted-list"><li style="list-style-type:circle">Delivery Units: 10,000 mmBtu</li></ul></li></ul><ul id="14e84369-c8cb-813b-883b-e16da0084dd7" class="bulleted-list"><li style="list-style-type:disc"><strong>Trading Volumes:</strong> The sources do not provide specific information on trading volumes for natural gas.</li></ul><ul id="14e84369-c8cb-81b8-8385-def4f52c87e9" class="bulleted-list"><li style="list-style-type:disc"><strong>Fundamental Factors:</strong><ul id="14e84369-c8cb-817b-8b8b-cf9823b13a75" class="bulleted-list"><li style="list-style-type:circle"><strong>Global Supply and Demand:</strong> Global natural gas supply and demand dynamics influence prices.</li></ul><ul id="14e84369-c8cb-815d-9638-f77ce68ed2d3" class="bulleted-list"><li style="list-style-type:circle"><strong>NYMEX Prices:</strong> Natural gas futures on MCX follow the price movements of natural gas on the New York Mercantile Exchange (NYMEX).</li></ul></li></ul><p id="14e84369-c8cb-81cd-a3b3-fc52a98f5e19" class=""><strong>Note:</strong> The sources provide limited information on trading volumes for several commodities. Additionally, they emphasize the importance of technical analysis for short-term commodity trading rather than deep fundamental analysis.</p><hr id="14e84369-c8cb-81c7-b57f-edb2028e7166"/><h2 id="14e84369-c8cb-812b-87e6-db459e729eab" class="">Introduction to Commodity Options</h2><p id="14e84369-c8cb-81c0-8999-e6d74ae26672" class="">This section introduces commodity options, covering the basics of option contracts in the context of commodities. It discusses option types, lot sizes, order types, exercise style, margins, and the process by which option positions convert into futures.</p><h3 id="14e84369-c8cb-819c-bc65-ded095bbddd3" class="">Commodity Options Basics</h3><p id="14e84369-c8cb-81d1-a5c1-e81ed6a68750" class="">Commodity options are derivative contracts that give the holder the right, but not the obligation, to buy or sell a specific quantity of a commodity at a predetermined price (strike price) on or before a specific date (expiry date).  The underlying asset for commodity options in India is the commodity futures contract, not the spot price of the commodity.</p><h3 id="14e84369-c8cb-8116-aad7-e78511d97cb0" class="">Option Types</h3><p id="14e84369-c8cb-81a9-bdc5-d33027374a1c" class="">Similar to equity options, commodity options have two main types:</p><ul id="14e84369-c8cb-8109-b936-c3d3259143ea" class="bulleted-list"><li style="list-style-type:disc"><strong>Call Options:</strong> Give the holder the right to buy the underlying futures contract at the strike price.</li></ul><ul id="14e84369-c8cb-8188-b7b3-d7de335f383f" class="bulleted-list"><li style="list-style-type:disc"><strong>Put Options:</strong> Give the holder the right to sell the underlying futures contract at the strike price.</li></ul><h3 id="14e84369-c8cb-81d9-a497-f70e0c7e9f65" class="">Lot Sizes</h3><p id="14e84369-c8cb-8192-a800-ffe0ace1ce9d" class="">The lot size for commodity options will likely be the same as the lot size of the underlying futures contract. For example, if the lot size for crude oil futures is 100 barrels, the lot size for a crude oil option will also likely be 100 barrels.</p><h3 id="14e84369-c8cb-81bf-92e1-d2300882898a" class="">Order Types</h3><p id="14e84369-c8cb-8176-bf10-e222fd21a91a" class="">The sources anticipate that commodity options will allow various order types, similar to equity options and futures. These could include:</p><ul id="14e84369-c8cb-8141-a510-da7ca1db2b7f" class="bulleted-list"><li style="list-style-type:disc"><strong>IOC (Immediate or Cancel):</strong> The order is executed immediately, and any unfilled portion is canceled.</li></ul><ul id="14e84369-c8cb-8179-a25b-c7e2011bca39" class="bulleted-list"><li style="list-style-type:disc"><strong>SL (Stop Loss):</strong> The order is triggered when the price reaches a predetermined stop loss level.</li></ul><ul id="14e84369-c8cb-810c-8d38-fbdd98446a34" class="bulleted-list"><li style="list-style-type:disc"><strong>SL-M (Stop Loss Market):</strong> A market order is placed when the price reaches the stop loss level.</li></ul><ul id="14e84369-c8cb-81d6-8f8d-d1e2978b860d" class="bulleted-list"><li style="list-style-type:disc"><strong>GTC (Good Till Cancelled):</strong> The order remains active until it is either filled or canceled.</li></ul><ul id="14e84369-c8cb-8161-b940-daafe28af5e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Regular Order:</strong> A basic order to buy or sell at the specified price.</li></ul><ul id="14e84369-c8cb-812c-8b15-f38e739de1a1" class="bulleted-list"><li style="list-style-type:disc"><strong>Limit Order:</strong> An order to buy or sell only at the specified limit price or better.</li></ul><h3 id="14e84369-c8cb-81a4-b71f-db18e1596f40" class="">Exercise Style</h3><p id="14e84369-c8cb-8126-a512-e0cd30d62449" class="">Commodity options in India will likely be <strong>European options</strong>, meaning that the holder can only exercise their right to buy or sell the underlying futures contract on the expiry date. This differs from American options, which allow exercise at any time before the expiry date.</p><h3 id="14e84369-c8cb-81cd-a3a0-dcd92669557b" class="">Margins</h3><p id="14e84369-c8cb-814e-8dae-d4a9c115ddb4" class="">The margin requirements for commodity options will be similar to those for futures and equity options:</p><ul id="14e84369-c8cb-8189-8f9c-d9d9a52549c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Option Writing:</strong> Writers of commodity options will need to pay SPAN margin (Standard Portfolio Analysis of Risk) and exposure margin.</li></ul><ul id="14e84369-c8cb-81f0-9016-f992f7290f42" class="bulleted-list"><li style="list-style-type:disc"><strong>Option Buying:</strong> Buyers of commodity options will need to pay the full premium upfront.</li></ul><p id="14e84369-c8cb-8128-92da-c1bb93cad92c" class="">The sources also note that the concept of <strong>devolvement margin</strong> will apply to commodity options. This margin is required when an option is likely to expire in-the-money (ITM) and convert into a futures position. The devolvement margin helps ensure that the option holder has sufficient funds to cover the potential margin requirements of the resulting futures position.</p><h3 id="14e84369-c8cb-8120-8591-c14bffb777de" class="">Option Position Conversion into Futures (Devolvement)</h3><p id="14e84369-c8cb-815a-a04d-d42e6cbceda1" class="">Upon expiry, commodity options can convert into futures positions. This process is known as <strong>devolvement</strong>, and it occurs when an option expires ITM.</p><p id="14e84369-c8cb-81af-8531-d0a7f31ed18d" class=""><strong>How Devolvement Works:</strong></p><ol type="1" id="14e84369-c8cb-8104-b5e2-e96409d4c0ec" class="numbered-list" start="1"><li><strong>Explicit Instruction:</strong> Holders of Close-to-the-Money (CTM) options, which are two strikes above and below the At-the-Money (ATM) strike, will need to provide an explicit instruction to devolve their option into a futures contract. Without this instruction, the CTM option will be deemed worthless.</li></ol><ol type="1" id="14e84369-c8cb-8163-bda8-c1ebba7295f3" class="numbered-list" start="2"><li><strong>Automatic Settlement:</strong> ITM options, excluding CTM options, will automatically settle into futures positions. Holders can provide a &quot;Contrary instruction&quot; to prevent automatic settlement.</li></ol><p id="14e84369-c8cb-8118-9847-d57f01fd0762" class="">The following table illustrates how different option positions devolve into futures positions:</p><table id="14e84369-c8cb-816c-b762-d93c20cbee6e" class="simple-table"><tbody><tr id="14e84369-c8cb-81e1-9fd0-c481db68101f"><td id="?Rlr" class="">Option Position</td><td id="nyw?" class="">Devolved Into</td></tr><tr id="14e84369-c8cb-812b-bac4-da5423a07dbd"><td id="?Rlr" class="">Long Call</td><td id="nyw?" class="">Long Futures</td></tr><tr id="14e84369-c8cb-81ce-9967-c4552475b395"><td id="?Rlr" class="">Short Call</td><td id="nyw?" class="">Short Futures</td></tr><tr id="14e84369-c8cb-81c6-aea6-e375432f8edd"><td id="?Rlr" class="">Long Put</td><td id="nyw?" class="">Short Futures</td></tr><tr id="14e84369-c8cb-8189-bd63-c20a9de899d1"><td id="?Rlr" class="">Short Put</td><td id="nyw?" class="">Long Futures</td></tr></tbody></table><p id="14e84369-c8cb-8114-bcb7-f2956181f1da" class=""><strong>Key Points to Remember about Devolvement:</strong></p><ul id="14e84369-c8cb-8183-9816-cd655db279f8" class="bulleted-list"><li style="list-style-type:disc">Commodity options expire a few days before the first tender date of the corresponding futures contract.</li></ul><ul id="14e84369-c8cb-8100-9544-cf64c11692c9" class="bulleted-list"><li style="list-style-type:disc">Exchanges will conduct &quot;What if&quot; scenarios and generate sensitivity reports to identify strikes likely to be ITM and CTM, and they will start assigning devolvement margins to these options.</li></ul><ul id="14e84369-c8cb-8117-85af-dfe1f75ffde2" class="bulleted-list"><li style="list-style-type:disc">The deeper ITM the option is, the lower the required devolvement margin will be. CTM options will attract higher margins.</li></ul><ul id="14e84369-c8cb-81ea-9512-ec0177a5a8ae" class="bulleted-list"><li style="list-style-type:disc">Holders of options likely to expire ITM should ensure they have sufficient margin funds as expiry approaches.</li></ul><p id="14e84369-c8cb-81e2-894c-eb7f550172e5" class=""><strong>Disclaimer:</strong> The information provided in this response is based on the provided sources. As the framework for commodity options is still under development, some details may change when the contracts are officially rolled out. It is advisable to stay updated with the latest information from the exchanges.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

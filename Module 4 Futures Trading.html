@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Module 4: Futures Trading</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="14e84369-c8cb-81d0-8080-cceaa5f82a7b" class="page sans"><header><h1 class="page-title">Module 4: Futures Trading</h1><p class="page-description"></p></header><div class="page-body"><h2 id="14e84369-c8cb-81d8-ba12-e8b70b8afad9" class="">From Forwards to Futures: An In-Depth Look at Futures Contracts</h2><p id="14e84369-c8cb-818e-9e78-c97cc1a85ba5" class="">This response will discuss the evolution of futures contracts from forward contracts, outlining the advantages of futures contracts and exploring key concepts, including:</p><ul id="14e84369-c8cb-8163-a03e-f5c3f6649489" class="bulleted-list"><li style="list-style-type:disc">Contract specifications</li></ul><ul id="14e84369-c8cb-81bd-ab14-cc8782d63758" class="bulleted-list"><li style="list-style-type:disc">Margin requirements</li></ul><ul id="14e84369-c8cb-81a9-976e-d2436df5fbe7" class="bulleted-list"><li style="list-style-type:disc">Leverage</li></ul><ul id="14e84369-c8cb-812f-a66c-d0cdd5bab37d" class="bulleted-list"><li style="list-style-type:disc">Payoff structure</li></ul><ul id="14e84369-c8cb-81bf-8444-c4c0b35fafcf" class="bulleted-list"><li style="list-style-type:disc">The regulatory framework governing the futures market</li></ul><h3 id="14e84369-c8cb-8129-a676-f2d3d50eb846" class="">The Origins of Futures Contracts</h3><p id="14e84369-c8cb-81b6-9aa4-ea0daecef971" class="">The futures market grew out of the <strong>forwards market</strong>, which was initially established to safeguard farmers&#x27; interests against fluctuating prices. Forwards contracts are <strong>private agreements between two parties</strong> to exchange goods for cash at a predetermined price on a specific future date. These agreements, known as &quot;Over the Counter or OTC&quot; agreements, are made face-to-face without third-party involvement.</p><p id="14e84369-c8cb-8146-b2d1-e86550aed204" class=""><strong>Futures contracts were developed to mitigate the risks associated with forward contracts</strong>. While futures and forwards share a similar transactional framework, <strong>futures contracts have evolved to become the preferred choice for traders</strong>, while forwards remain largely limited to certain participants like industries and banks.</p><h3 id="14e84369-c8cb-814f-994a-f29cac3c095b" class="">Advantages of Futures Contracts</h3><p id="14e84369-c8cb-81cc-9278-f74cbbf8b14e" class="">Futures contracts offer several advantages over forward contracts. Let&#x27;s examine each of these advantages in detail:</p><ul id="14e84369-c8cb-81d7-bf38-cca7b6d3fd1d" class="bulleted-list"><li style="list-style-type:disc"><strong>Standardized Contracts:</strong> Unlike forwards, which can be customized, futures contracts are standardized, meaning the terms of the agreement are pre-defined and non-negotiable. This standardization encompasses aspects such as:<ul id="14e84369-c8cb-81ef-8929-ce2ca57cfec0" class="bulleted-list"><li style="list-style-type:circle"><strong>Contract size:</strong> The minimum quantity of the underlying asset that must be traded.</li></ul><ul id="14e84369-c8cb-8117-bafb-f15fa9a41866" class="bulleted-list"><li style="list-style-type:circle"><strong>Expiry date:</strong> The specific date on which the contract expires.</li></ul><ul id="14e84369-c8cb-81b2-8fb8-fd46e9647867" class="bulleted-list"><li style="list-style-type:circle"><strong>Delivery and settlement procedures:</strong> The established processes for delivering the underlying asset or settling the contract in cash.</li></ul><p id="14e84369-c8cb-81f0-92da-dd286d8878de" class="">This standardization promotes <strong>transparency, efficiency, and ease of trading</strong> in the futures market.</p></li></ul><ul id="14e84369-c8cb-819c-92c8-fb4a5203b356" class="bulleted-list"><li style="list-style-type:disc"><strong>Tradability:</strong> Futures contracts are easily tradable on organized exchanges, allowing traders to exit their positions before the contract&#x27;s expiry date. <strong>This flexibility empowers traders to manage their risk and react to changing market conditions</strong> without being bound to the original agreement until expiry. In contrast, forward contracts lack this transferability and are not readily tradable.</li></ul><ul id="14e84369-c8cb-8186-b6e7-dee368c13f78" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation of Counterparty Risk:</strong> Futures contracts are traded through clearinghouses, acting as central counterparties to all trades. <strong>The clearinghouse guarantees the settlement of all trades, even if one party defaults</strong>. This arrangement significantly reduces counterparty risk, a major drawback of forward contracts.</li></ul><ul id="14e84369-c8cb-81fa-ba6f-d35b2f46c843" class="bulleted-list"><li style="list-style-type:disc"><strong>Regulatory Oversight:</strong> Futures markets operate under the watchful eye of regulatory bodies such as the Securities and Exchange Board of India (SEBI) in India. <strong>This regulation ensures market integrity, transparency, and investor protection</strong>, mitigating the regulatory risk associated with forward contracts.</li></ul><h3 id="14e84369-c8cb-8129-a89a-d0d883bd980f" class="">Key Features of Futures Contracts</h3><p id="14e84369-c8cb-81e5-b9a7-dc2bbe994a5d" class="">To gain a deeper understanding of futures contracts, let&#x27;s examine some of their key features:</p><ul id="14e84369-c8cb-8130-8074-c86dc16a1e70" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract Specifications:</strong> The sources provide detailed information on contract specifications for various futures contracts traded on the National Stock Exchange (NSE) and Multi Commodity Exchange (MCX). These specifications typically include:<ul id="14e84369-c8cb-81cf-8882-c0ac540ad494" class="bulleted-list"><li style="list-style-type:circle"><strong>Underlying Asset:</strong> The asset on which the futures contract is based. Examples include stocks like TCS and SBI, indices like Nifty, currencies like USD-INR, and commodities like gold and crude oil.</li></ul><ul id="14e84369-c8cb-81ec-9c71-db426792d9ab" class="bulleted-list"><li style="list-style-type:circle"><strong>Contract Size:</strong> The standardized quantity of the underlying asset covered by each contract. For instance, the lot size for TCS futures is 125 shares, while the lot size for gold futures is 1 kg.</li></ul><ul id="14e84369-c8cb-8171-8df2-f7e7370f206d" class="bulleted-list"><li style="list-style-type:circle"><strong>Tick Size:</strong> The minimum price movement allowed for the futures contract.</li></ul><ul id="14e84369-c8cb-81b8-b784-cf3bcea27140" class="bulleted-list"><li style="list-style-type:circle"><strong>Expiry Date:</strong> The specific date on which the contract expires.</li></ul><p id="14e84369-c8cb-8123-a80f-c184a55ad1f5" class="">Understanding these specifications is crucial for trading futures effectively.</p></li></ul><ul id="14e84369-c8cb-8118-81aa-e4ff3472e10e" class="bulleted-list"><li style="list-style-type:disc"><strong>Margin Requirements:</strong> Futures trading involves <strong>leverage</strong>, which enables traders to control a large position with a relatively small amount of capital. To mitigate the risk associated with leverage, <strong>exchanges require traders to deposit a margin</strong>, which is a percentage of the contract value. This margin acts as a <strong>good faith deposit</strong> and covers potential losses. The two primary components of margin are:<ul id="14e84369-c8cb-8113-a363-cf2f118a6a1b" class="bulleted-list"><li style="list-style-type:circle"><strong>SPAN Margin:</strong> Calculated based on the potential price volatility of the underlying asset.</li></ul><ul id="14e84369-c8cb-81d9-b8c2-ec963f279541" class="bulleted-list"><li style="list-style-type:circle"><strong>Exposure Margin:</strong> Designed to cover additional potential losses beyond the SPAN margin.</li></ul><p id="14e84369-c8cb-81d7-9335-f7592f2442e7" class=""><strong>Margin requirements protect both the trader and the clearinghouse from excessive losses</strong>.</p></li></ul><ul id="14e84369-c8cb-81f8-9e49-c2d6924eddf8" class="bulleted-list"><li style="list-style-type:disc"><strong>Leverage:</strong> Leverage is a key characteristic of futures trading, allowing traders to magnify their profits and losses. <strong>The higher the leverage, the greater the potential reward, but also the greater the potential risk.</strong> For instance, if the margin requirement for a particular futures contract is 10%, a trader can control a position worth 10 times their initial margin deposit. This leverage enables significant profits if the market moves in the trader&#x27;s favor, but it can also lead to substantial losses if the market moves against the trader&#x27;s position.</li></ul><ul id="14e84369-c8cb-8122-89a9-d796e5a6146d" class="bulleted-list"><li style="list-style-type:disc"><strong>Payoff Structure:</strong> The payoff of a futures contract refers to the profit or loss realized by the trader at various price levels of the underlying asset. Futures contracts have a <strong>linear payoff structure</strong>, meaning the profit or loss is directly proportional to the change in the underlying asset&#x27;s price. The sources illustrate this concept with the example of TCS futures, where a 1 point increase in the TCS stock price results in a profit of Rs. 250, while a 1 point decrease leads to a loss of Rs. 250.</li></ul><ul id="14e84369-c8cb-81d9-b5ef-d9bc3afc061d" class="bulleted-list"><li style="list-style-type:disc"><strong>Mark-to-Market (M2M):</strong> <strong>Futures contracts are subject to daily mark-to-market adjustments</strong>, where profits and losses are settled daily based on the closing price of the contract. <strong>This process ensures that losses are covered promptly, reducing the risk of default</strong>. If a trader&#x27;s losses exceed their margin balance, they will receive a margin call, requiring them to deposit additional funds to cover the shortfall.</li></ul><ul id="14e84369-c8cb-81b1-aba9-dea782a2147a" class="bulleted-list"><li style="list-style-type:disc"><strong>Regulatory Framework:</strong> The futures market operates within a robust regulatory framework, overseen by regulatory bodies like SEBI in India. <strong>This framework aims to ensure market integrity, transparency, and investor protection.</strong> Key regulatory aspects include:<ul id="14e84369-c8cb-81f3-9b6d-e30f2e296035" class="bulleted-list"><li style="list-style-type:circle"><strong>Exchange regulations:</strong> Exchanges like NSE and MCX have specific rules and regulations governing trading activities, including margin requirements, position limits, and trading hours.</li></ul><ul id="14e84369-c8cb-81f2-a073-c1043916b10d" class="bulleted-list"><li style="list-style-type:circle"><strong>Securities laws:</strong> Securities laws establish broader guidelines for the operation of securities markets, including futures markets, and address issues such as insider trading, market manipulation, and investor protection.</li></ul><ul id="14e84369-c8cb-8149-8b57-c7891a3c9311" class="bulleted-list"><li style="list-style-type:circle"><strong>Clearing and settlement procedures:</strong> Clearinghouses play a critical role in guaranteeing the settlement of trades and mitigating counterparty risk. Regulations govern the operations of clearinghouses to ensure their financial stability and the integrity of the settlement process.</li></ul><p id="14e84369-c8cb-813c-ad1a-ec7c5ce56931" class="">This comprehensive regulatory framework provides a safe and transparent environment for futures trading.</p></li></ul><h3 id="14e84369-c8cb-81e5-8be8-f22a4e60a600" class="">Conclusion: Futures Contracts - A Versatile Tool for Traders and Hedgers</h3><p id="14e84369-c8cb-8144-8962-fe17c261548f" class="">Futures contracts represent a powerful and versatile financial instrument, offering traders and hedgers a means to:</p><ul id="14e84369-c8cb-8145-b89d-c39bf08fbb12" class="bulleted-list"><li style="list-style-type:disc"><strong>Speculate on price movements:</strong> Leverage enables traders to profit from even small price fluctuations, making futures contracts attractive for speculative trading.</li></ul><ul id="14e84369-c8cb-81e5-9a7d-d1362ed12293" class="bulleted-list"><li style="list-style-type:disc"><strong>Hedge against price risk:</strong> Businesses can use futures contracts to lock in prices for commodities or other assets, protecting themselves from adverse price movements.</li></ul><ul id="14e84369-c8cb-814c-bd74-ce8f64c0ddec" class="bulleted-list"><li style="list-style-type:disc"><strong>Manage portfolio risk:</strong> Futures contracts can be used to adjust the overall risk profile of an investment portfolio, reducing exposure to specific market sectors or asset classes.</li></ul><p id="14e84369-c8cb-8150-bdec-fa740907f9cc" class="">However, futures trading involves significant risks due to leverage. Traders must carefully manage their risk and use appropriate strategies to mitigate potential losses.</p><hr id="14e84369-c8cb-8173-9b9a-ef3e1e7619aa"/><h2 id="14e84369-c8cb-8120-90eb-f5d265b9ef19" class="">Understanding Margins and Margin Calculators</h2><p id="14e84369-c8cb-810a-8335-d5959955f5fc" class="">This section explains the concept of margins, different margin types, the function of the Risk Management System (RMS), and the calculation of margins using a margin calculator. It will also touch upon NRML and MIS product types, trailing stop loss, and rollover.</p><h3 id="14e84369-c8cb-819c-9790-d843135ac394" class="">Margin Requirements and Their Importance</h3><p id="14e84369-c8cb-8125-bdbe-cfb822c84b51" class="">Margins are essential in futures trading as they <strong>allow traders to control large positions with a relatively small amount of capital</strong>. This is known as <strong>leverage</strong>, and while it can magnify profits, it also increases potential losses. To mitigate these risks, exchanges require traders to deposit a margin, which acts as a good faith deposit to cover potential losses.</p><p id="14e84369-c8cb-816d-8e70-e13daaa8dda0" class="">The margin requirement is a <strong>percentage of the contract value</strong> and varies depending on the volatility of the underlying asset. If a trader&#x27;s losses exceed their margin balance, they will receive a <strong>margin call</strong>, prompting them to deposit more funds to cover the shortfall.</p><h3 id="14e84369-c8cb-814f-9bce-c48eeee8bf4f" class="">Margin Types: SPAN and Exposure</h3><p id="14e84369-c8cb-817a-9cc2-fc2b309c845b" class="">The two main components of margin are <strong>SPAN margin</strong> and <strong>exposure margin</strong>.</p><ul id="14e84369-c8cb-8119-95da-dd2656851f19" class="bulleted-list"><li style="list-style-type:disc"><strong>SPAN margin</strong>, also referred to as <strong>maintenance margin</strong>, is calculated based on the potential price volatility of the underlying asset. It must be maintained as long as the trader wants to hold their position.</li></ul><ul id="14e84369-c8cb-81c3-9a43-f43a6a0e7f94" class="bulleted-list"><li style="list-style-type:disc"><strong>Exposure margin</strong> is an additional margin that serves as an extra buffer against potential losses. It usually ranges from 4% to 5% of the contract value.</li></ul><h3 id="14e84369-c8cb-81af-b602-c9a73aaedb6e" class="">The Risk Management System (RMS)</h3><p id="14e84369-c8cb-8174-a8fd-e9beddbedda9" class="">The <strong>risk management system (RMS)</strong> at the brokerage, often a sophisticated computer program, is responsible for managing overall risk. The RMS evaluates each trade and ensures traders have the required margin before allowing the trade to proceed.</p><p id="14e84369-c8cb-8109-bab6-d67ba845e3b6" class="">The RMS considers various factors when assessing risk:</p><ul id="14e84369-c8cb-8102-81fe-ef87ef93c57a" class="bulleted-list"><li style="list-style-type:disc"><strong>Contract:</strong> The specific futures contract being traded.</li></ul><ul id="14e84369-c8cb-814d-81bb-ebb8d3206061" class="bulleted-list"><li style="list-style-type:disc"><strong>Quantity:</strong> The number of lots the trader wants to buy or sell.</li></ul><ul id="14e84369-c8cb-81e3-8d5f-c783e2689bf3" class="bulleted-list"><li style="list-style-type:disc"><strong>Price:</strong> The desired buy or sell price.</li></ul><ul id="14e84369-c8cb-8129-b001-cf1f81003c46" class="bulleted-list"><li style="list-style-type:disc"><strong>Duration:</strong> The length of time the trader intends to hold the trade, which influences the volatility exposure.</li></ul><ul id="14e84369-c8cb-8107-b497-e1326417b8e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Stop-loss:</strong> The maximum loss the trader is willing to accept.</li></ul><p id="14e84369-c8cb-819c-bc0a-ee3f836a92a7" class="">By understanding these factors, the RMS can determine the appropriate margin requirement for a given trade.</p><h3 id="14e84369-c8cb-8127-b244-c09e6281dfb2" class="">Product Types: NRML, MIS, CO, and BO</h3><p id="14e84369-c8cb-8185-bc02-e6938b143261" class="">Traders can use different product types to convey their risk appetite to the RMS, which can impact the required margin.  The sources discuss various product types available on Zerodha, an Indian brokerage:</p><ul id="14e84369-c8cb-81ce-89b8-d022799362b2" class="bulleted-list"><li style="list-style-type:disc"><strong>NRML (Normal):</strong> This standard product type is used when a trader intends to hold the position overnight or for an extended period. The RMS has no information about the trade&#x27;s duration or stop-loss, so it charges the full margin (SPAN and exposure).</li></ul><ul id="14e84369-c8cb-81c9-8b79-c78af637b4e8" class="bulleted-list"><li style="list-style-type:disc"><strong>MIS (Margin Intraday Square-off):</strong> Designed specifically for intraday trading, requiring positions to be squared off within the same trading day. Since MIS trades are only exposed to one day&#x27;s worth of volatility, the margin requirement is lower than NRML.</li></ul><ul id="14e84369-c8cb-81ee-a573-deaa1be80eb5" class="bulleted-list"><li style="list-style-type:disc"><strong>Cover Order (CO):</strong> Similar to MIS, the CO is an intraday product, but it requires the trader to specify a stop-loss at the time of order placement. This provides the RMS with more information about the trader&#x27;s risk tolerance, leading to even lower margins compared to MIS.</li></ul><ul id="14e84369-c8cb-810e-a3b6-ec8bb7b5ef79" class="bulleted-list"><li style="list-style-type:disc"><strong>Bracket Order (BO):</strong> This order type combines a CO with a target profit level. While the target price information doesn&#x27;t affect the margin requirement, it allows for automatic order execution once either the stop-loss or target price is reached.</li></ul><h3 id="14e84369-c8cb-817e-a0bf-ff43cea0767e" class="">Margin Calculator</h3><p id="14e84369-c8cb-8196-a019-f96f571aa45d" class="">A margin calculator, like the one offered by Zerodha, helps traders determine the required margin for a specific futures contract.</p><p id="14e84369-c8cb-8154-a18b-ce6b943d88b7" class="">The Zerodha Margin Calculator provides the following features:</p><ul id="14e84369-c8cb-8159-b5e4-ef338b992101" class="bulleted-list"><li style="list-style-type:disc"><strong>SPAN Margin Calculator:</strong> Displays the SPAN and exposure margin requirements for various contracts.</li></ul><ul id="14e84369-c8cb-8120-a55d-dd2438fd8f2b" class="bulleted-list"><li style="list-style-type:disc"><strong>Equity Futures:</strong> Provides NRML and MIS margin requirements, and indicates the number of lots a trader can buy based on their trading account balance.</li></ul><ul id="14e84369-c8cb-81ca-a39f-c6daab64a591" class="bulleted-list"><li style="list-style-type:disc"><strong>BO &amp; CO Calculator:</strong> Calculates the margin required for bracket and cover orders, considering the chosen stop-loss level.</li></ul><h3 id="14e84369-c8cb-8158-bc15-dd90fa95e595" class="">Trailing Stop Loss</h3><p id="14e84369-c8cb-81ce-9404-e0d569a82866" class="">A trailing stop-loss is a risk management technique that automatically adjusts the stop-loss level as the trade moves in the trader&#x27;s favor.  This approach allows traders to lock in profits while minimizing potential losses if the market reverses direction.</p><h3 id="14e84369-c8cb-8115-820a-f49a0c44956f" class="">Rollover</h3><p id="14e84369-c8cb-81a9-acfa-c4a1a1a604fe" class="">A rollover occurs when a trader wants to extend their position beyond the expiry date of the current contract.  The trader closes their position in the expiring contract and simultaneously opens a new position in the next month&#x27;s contract.</p><h3 id="14e84369-c8cb-81fa-b497-c253a37b78b4" class="">Summary of Key Concepts</h3><ul id="14e84369-c8cb-817d-8f77-c568f239b005" class="bulleted-list"><li style="list-style-type:disc">Margins are crucial in futures trading, enabling leverage and protecting against potential losses.</li></ul><ul id="14e84369-c8cb-8154-a9c6-ec203ee306f5" class="bulleted-list"><li style="list-style-type:disc">The RMS assesses risk and determines margin requirements based on factors like trade duration, stop-loss, and volatility.</li></ul><ul id="14e84369-c8cb-81df-a837-d169f4c16303" class="bulleted-list"><li style="list-style-type:disc">Different product types cater to varying trading styles and risk preferences.</li></ul><ul id="14e84369-c8cb-8166-8d40-f75c5540f139" class="bulleted-list"><li style="list-style-type:disc">A margin calculator helps traders determine the necessary margin for a specific trade.</li></ul><ul id="14e84369-c8cb-81a3-bdfd-e356aaccdfae" class="bulleted-list"><li style="list-style-type:disc">Trailing stop-losses and rollovers are helpful tools for managing risk and extending positions.</li></ul><p id="14e84369-c8cb-8189-be19-e1b03f38c076" class="">Understanding margins and margin calculators is fundamental to successful futures trading. By using these concepts effectively, traders can leverage their capital while minimizing potential losses.</p><hr id="14e84369-c8cb-8197-9ca9-e5397363f975"/><h2 id="14e84369-c8cb-8138-9975-e0052751bcde" class="">Shorting in the Futures Market</h2><p id="14e84369-c8cb-817b-8f6d-f9baa2222f88" class="">This section provides a comprehensive understanding of shorting in the futures market, exploring the concept of shorting in general, the mechanics of shorting in the spot market, and the differences between shorting in the spot and futures markets.</p><h3 id="14e84369-c8cb-81c2-80b6-d5ffa609b6a3" class="">What is Shorting?</h3><p id="14e84369-c8cb-8140-a9e8-f1b0e11c4d19" class="">Shorting, or short selling, is a trading strategy where a trader sells an asset they don&#x27;t own, expecting its price to decline. The trader borrows the asset from another market participant and sells it at the current market price. If the price drops as anticipated, the trader buys back the asset at a lower price, returns it to the lender, and pockets the difference as profit.</p><p id="14e84369-c8cb-81a3-ad4d-e36e326a4d22" class="">Shorting essentially reverses the usual &quot;buy low, sell high&quot; approach. Instead, traders aim to &quot;sell high, buy low.&quot;  This strategy is profitable when the asset&#x27;s price goes down after the short sale. If the price increases, the trader incurs a loss.</p><h3 id="14e84369-c8cb-8152-a3a8-de4aa45dde92" class="">Mechanics of Shorting in the Spot Market</h3><p id="14e84369-c8cb-81fc-9c47-ee7eadd02cc8" class="">In the spot market, shorting a stock involves these steps:</p><ol type="1" id="14e84369-c8cb-8124-ba3d-d61307ecf180" class="numbered-list" start="1"><li><strong>Identifying a Shorting Opportunity:</strong> The trader analyzes a stock and believes its price will decline based on factors like a bearish chart pattern, high volume, or resistance levels.</li></ol><ol type="1" id="14e84369-c8cb-8135-be6c-cfd003e69d74" class="numbered-list" start="2"><li><strong>Borrowing the Stock:</strong> The trader borrows the stock from a broker or another market participant who owns it.</li></ol><ol type="1" id="14e84369-c8cb-8118-bfe6-d5b381eb085e" class="numbered-list" start="3"><li><strong>Selling the Borrowed Stock:</strong> The trader sells the borrowed stock at the current market price.</li></ol><ol type="1" id="14e84369-c8cb-8173-b797-d0adb5bdb34c" class="numbered-list" start="4"><li><strong>Buying Back the Stock:</strong> If the price drops as expected, the trader buys back the stock at a lower price.</li></ol><ol type="1" id="14e84369-c8cb-810f-8de0-f998b0a67834" class="numbered-list" start="5"><li><strong>Returning the Stock:</strong> The trader returns the repurchased stock to the lender, completing the transaction.</li></ol><p id="14e84369-c8cb-8108-b2e0-d2f3c9b53270" class="">Shorting in the spot market is subject to a key restriction: it must be executed on an intraday basis. This means traders can initiate a short trade during market hours but must buy back the shares (square off) before the market closes.</p><p id="14e84369-c8cb-8190-8c60-dd8a6c1ad57c" class="">The intraday restriction stems from the exchange&#x27;s perspective on short selling.  The exchange views a short sale as a regular stock sale, obligating the seller to deliver the shares. Since the trader doesn&#x27;t own the shares they shorted, failing to buy them back before the market closes would result in a &quot;short delivery&quot; and potential penalties.</p><h3 id="14e84369-c8cb-8100-a56b-e9dafb3e3a19" class="">Shorting in the Futures Market</h3><p id="14e84369-c8cb-8118-bbe3-d7fe9e8a41c2" class="">Shorting in the futures market is more flexible than in the spot market.  Traders can initiate a short futures position and hold it overnight or for an extended period. This is because futures contracts are standardized agreements to buy or sell an asset at a predetermined price and date, eliminating the need for physical delivery.</p><p id="14e84369-c8cb-8133-8e19-dcea58a54f94" class=""><strong>Steps for Shorting in the Futures Market:</strong></p><ol type="1" id="14e84369-c8cb-8172-b84b-fb47d26bd506" class="numbered-list" start="1"><li><strong>Developing a Bearish View:</strong> The trader analyzes the underlying asset and believes its price will decline.</li></ol><ol type="1" id="14e84369-c8cb-8190-8ca0-ff8e776e80d0" class="numbered-list" start="2"><li><strong>Selling a Futures Contract:</strong> The trader sells a futures contract at the current market price, entering into an agreement to sell the underlying asset at the specified price on the expiry date.</li></ol><ol type="1" id="14e84369-c8cb-8128-af14-cc11c1fc7655" class="numbered-list" start="3"><li><strong>Buying Back the Futures Contract:</strong> If the price drops as anticipated, the trader buys back a futures contract at a lower price, offsetting their initial short position.</li></ol><ol type="1" id="14e84369-c8cb-8146-b9ce-ee2373e63fef" class="numbered-list" start="4"><li><strong>Profit Calculation:</strong> The profit is calculated as the difference between the selling price and the buying price, multiplied by the contract size.</li></ol><p id="14e84369-c8cb-81bf-98cc-c42fc397ef21" class=""><strong>Advantages of Shorting in the Futures Market:</strong></p><ul id="14e84369-c8cb-8130-b26e-cb5b6245c9ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Leverage:</strong> Like long futures positions, short futures offer leverage, allowing traders to control larger positions with a smaller capital outlay.</li></ul><ul id="14e84369-c8cb-8113-8043-c6f34faaec42" class="bulleted-list"><li style="list-style-type:disc"><strong>No Intraday Restriction:</strong> Traders can hold short futures positions overnight or for extended periods, unlike short positions in the spot market.</li></ul><ul id="14e84369-c8cb-8139-866f-d4cdfb2193d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Ease of Execution:</strong> Shorting in the futures market is typically easier and faster than in the spot market, due to higher liquidity.</li></ul><h3 id="14e84369-c8cb-81a2-b404-d89ac8b22fc2" class="">Differences Between Shorting in the Spot and Futures Markets</h3><p id="14e84369-c8cb-8193-b781-f3333804d238" class="">Here&#x27;s a table summarizing the key differences between shorting in the spot and futures markets:</p><table id="14e84369-c8cb-8112-87d9-fe4d0586255c" class="simple-table"><tbody><tr id="14e84369-c8cb-810f-9887-e7e6166b8a6d"><td id="TgDz" class="block-color-yellow">Feature</td><td id="teAW" class="block-color-yellow">Spot Market</td><td id="G{my" class="block-color-yellow" style="width:492px">Futures Market</td></tr><tr id="14e84369-c8cb-8126-939f-e13ea223d329"><td id="TgDz" class="block-color-yellow">Delivery Obligation</td><td id="teAW" class="">Required to deliver shares</td><td id="G{my" class="" style="width:492px">No physical delivery; contracts are cash settled</td></tr><tr id="14e84369-c8cb-8189-9fd6-c77160f1fcca"><td id="TgDz" class="block-color-yellow">Time Horizon</td><td id="teAW" class="">Intraday only</td><td id="G{my" class="" style="width:492px">Can be held overnight or for extended periods</td></tr><tr id="14e84369-c8cb-8162-ae1c-ea27340c84c5"><td id="TgDz" class="block-color-yellow">Margin Requirement</td><td id="teAW" class="">Typically higher due to the risk of short delivery</td><td id="G{my" class="" style="width:492px">Relatively lower as contracts are standardized and exchange-traded</td></tr><tr id="14e84369-c8cb-814f-bf90-d6a751ecee42"><td id="TgDz" class="block-color-yellow">Trading Costs</td><td id="teAW" class="">May involve borrowing fees and higher brokerage commissions</td><td id="G{my" class="" style="width:492px">Typically lower due to higher liquidity and standardized contracts</td></tr><tr id="14e84369-c8cb-8152-aa3b-c4b589003930"><td id="TgDz" class="block-color-yellow">Risk</td><td id="teAW" class="">Unlimited potential loss if the stock price rises significantly</td><td id="G{my" class="" style="width:492px">Limited potential loss to the extent of the margin deposited; however, leverage amplifies both profits and losses</td></tr><tr id="14e84369-c8cb-8169-bb08-cc7e9b03548a"><td id="TgDz" class="block-color-yellow">Settlement</td><td id="teAW" class="">Settlement happens on T+2 days</td><td id="G{my" class="" style="width:492px">Daily mark-to-market (M2M) settlements, where profits and losses are adjusted in the trading account based on the day&#x27;s price fluctuations</td></tr></tbody></table><p id="14e84369-c8cb-8101-9dbf-e128a0ab8318" class="">Understanding the mechanics and differences between shorting in the spot and futures markets is crucial for traders who want to profit from declining asset prices. By utilizing the flexibility and leverage offered by the futures market, traders can capitalize on bearish market conditions while effectively managing risk.</p><hr id="14e84369-c8cb-8180-a601-f71ececfee8b"/><h2 id="14e84369-c8cb-817d-81ea-e2012a6d9ddf" class="">Nifty Futures and Impact Cost</h2><p id="14e84369-c8cb-8132-810b-e68aee5b5e00" class="">This section introduces Nifty futures, explaining their significance and advantages for traders. It will also explain the concept of impact cost, its calculation, and its relationship with liquidity.</p><h3 id="14e84369-c8cb-81c6-ad26-d931781ebbed" class="">Nifty Futures</h3><p id="14e84369-c8cb-819e-8313-e31fa28c49a0" class=""><strong>Nifty Futures</strong> are derivative contracts that derive their value from the Nifty Index. This means that if the value of the Nifty Index goes up, the value of Nifty futures also goes up, and vice versa. <strong>Nifty futures are the most liquid futures contract in India.</strong> Just like other futures contracts, Nifty Futures contracts are also available with three different expiry options: Current month, Mid Month, and Far Month.</p><ul id="14e84369-c8cb-81b4-a988-e1434549914f" class="bulleted-list"><li style="list-style-type:disc"><strong>Liquidity:</strong> Nifty Futures are highly liquid, meaning traders can transact any quantity without worrying about impact costs. High liquidity results in tighter bid-ask spreads, leading to lower impact costs, which minimizes losses, particularly when placing market orders.</li></ul><ul id="14e84369-c8cb-8178-b715-dfc1a5ee17c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Diversification:</strong> Nifty futures offer diversification because they represent a portfolio of 50 stocks across various sectors of the Indian economy, reducing unsystematic risk. Trading Nifty futures eliminates company-specific directional calls and focuses on broader economic trends.</li></ul><ul id="14e84369-c8cb-8159-8f16-da376661ff4c" class="bulleted-list"><li style="list-style-type:disc"><strong>Manipulation Resistance:</strong> Due to their composition of the top 50 companies by market capitalization, Nifty futures are difficult to manipulate.</li></ul><ul id="14e84369-c8cb-813c-aa72-f0bb03056899" class="bulleted-list"><li style="list-style-type:disc"><strong>Lower Margins:</strong> Nifty futures require lower margins (12-15%) compared to individual stock futures, which can go up to 45-60%.</li></ul><ul id="14e84369-c8cb-8173-9137-cf1edd57939a" class="bulleted-list"><li style="list-style-type:disc"><strong>Technical Analysis Applicability:</strong> The liquidity of Nifty futures makes them suitable for applying technical analysis, as their movements are primarily driven by demand-supply dynamics.</li></ul><ul id="14e84369-c8cb-81dd-9fdb-cb0e9122af66" class="bulleted-list"><li style="list-style-type:disc"><strong>Lower Volatility:</strong> Nifty futures exhibit lower volatility (16-17%) compared to individual stock futures, like Infosys, with volatility exceeding 30%.</li></ul><h3 id="14e84369-c8cb-8150-b3c1-f7b84980898c" class="">Impact Cost</h3><p id="14e84369-c8cb-813d-a008-e346e16d99e0" class=""><strong>Impact cost represents the implicit cost incurred due to market price movement caused by placing a buy or sell order.</strong> <strong>Impact cost is calculated as the percentage loss incurred by executing a &quot;round-trip&quot; trade, where you buy at the best available selling price and immediately sell at the best available buying price.</strong> This loss is then expressed as a percentage of the average of the bid and ask price. <strong>Impact cost serves as an indicator of liquidity.</strong> <strong>The higher the liquidity of a stock or futures contract, the lower the impact cost, and vice versa.</strong></p><p id="14e84369-c8cb-81a1-b990-c57031466f00" class="">For example:</p><ul id="14e84369-c8cb-819b-8207-e08e387a5687" class="bulleted-list"><li style="list-style-type:disc">If the buying price of Nifty futures is Rs. 8,769.9 and the selling price is Rs. 8,768.8, the round-trip loss would be Rs. 1.1 (8769.9 - 8768.8).</li></ul><ul id="14e84369-c8cb-8107-8406-c2375c56e902" class="bulleted-list"><li style="list-style-type:disc">The average of the bid and ask price is Rs. 8,769.35 ((8769.9 + 8768.8)/2).</li></ul><ul id="14e84369-c8cb-810c-81c0-e918667db545" class="bulleted-list"><li style="list-style-type:disc">Therefore, the impact cost would be 0.0125% (1.1 / 8769.35). This means if you buy or sell Nifty futures at the market price, you&#x27;d likely lose around 0.0125%.</li></ul><p id="14e84369-c8cb-81d9-81bf-d2d9b64d85f8" class=""><strong>Nifty futures have an impact cost of approximately 0.0125%, making them the most liquid contract to trade in India.</strong> Other liquid futures contracts in India include Bank Nifty Futures, Reliance Industries, Tata Motors, SBIN, Infosys, TCS, ITC, DLF, and Cipla. You can calculate the impact cost for these contracts to assess their liquidity.</p><h3 id="14e84369-c8cb-81c9-89fb-c496f2b31a2f" class="">Impact Cost and Liquidity</h3><p id="14e84369-c8cb-811f-a30e-cfddd3bc5774" class=""><strong>A higher spread between buying and selling prices indicates higher impact costs and lower liquidity.</strong> Conversely, <strong>lower spreads suggest lower impact costs and greater liquidity.</strong>  Placing market orders for illiquid stocks with high impact costs is not advisable.</p><ul id="14e84369-c8cb-819b-b526-db8093a80e6b" class="bulleted-list"><li style="list-style-type:disc"><strong>High liquidity translates to lower volatility.</strong></li></ul><ul id="14e84369-c8cb-817d-88bc-fb717c1af18a" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact cost helps gauge the liquidity of a stock or futures contract.</strong></li></ul><ul id="14e84369-c8cb-81f0-844f-ecc3276dbf7d" class="bulleted-list"><li style="list-style-type:disc"><strong>When placing a market order, traders should be aware of potential losses due to impact costs, which can vary depending on the number of shares or contracts traded.</strong></li></ul><p id="14e84369-c8cb-811f-86b1-c7dec75db262" class="">The impact cost for Nifty futures (0.0125%) serves as a benchmark for assessing liquidity. A higher impact cost, such as 0.3% for MRF, indicates significantly lower liquidity compared to Nifty futures.</p><hr id="14e84369-c8cb-81eb-8f5a-ff4c05c0c801"/><h2 id="14e84369-c8cb-8157-a5a5-fd808e630819" class="">Futures Pricing</h2><p id="14e84369-c8cb-8130-bd01-c7524835c364" class="">This section will discuss the pricing of futures contracts, providing a deeper understanding for traders interested in quantitative strategies such as calendar spreads and index arbitrage.</p><h3 id="14e84369-c8cb-81e7-87ad-cbeb8dfada4a" class="">Futures Pricing Formula</h3><p id="14e84369-c8cb-81e3-86ab-c99315be96e2" class="">The <strong>futures pricing formula</strong> is used to calculate the theoretical fair value of a futures contract. This formula takes into account the spot price of the underlying asset, the risk-free rate of interest, the time to expiry of the futures contract, and any dividends or other income expected to be paid on the underlying asset during the life of the contract.</p><p id="14e84369-c8cb-81d3-9dae-ec4704cac4a2" class=""><strong>Futures Price = Spot price * (1 + Risk-free rate * (Time to expiry/365)) - Dividend</strong></p><p id="14e84369-c8cb-81fd-8df2-e573f37d8090" class=""><strong>Where:</strong></p><ul id="14e84369-c8cb-812b-ab71-cc549515d70c" class="bulleted-list"><li style="list-style-type:disc"><strong>Spot Price:</strong> The current price of the underlying asset in the spot market.</li></ul><ul id="14e84369-c8cb-8125-94d6-f2cff4fa332a" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk-Free Rate (Rf):</strong> The interest rate that can be earned on a risk-free investment, such as a government bond.</li></ul><ul id="14e84369-c8cb-8193-975c-c535800985c1" class="bulleted-list"><li style="list-style-type:disc"><strong>Time to Expiry (x):</strong> The number of days until the futures contract expires.</li></ul><ul id="14e84369-c8cb-8155-8cef-f72b676f57c5" class="bulleted-list"><li style="list-style-type:disc"><strong>Dividend (d):</strong> Any dividends or other income that is expected to be paid on the underlying asset during the life of the futures contract.</li></ul><h3 id="14e84369-c8cb-8174-b3a7-fde140cb8448" class="">Basis or Spread</h3><p id="14e84369-c8cb-81bf-a83a-e0c2566ca99f" class="">The <strong>basis</strong> (or spread) is the difference between the futures price and the spot price.</p><ul id="14e84369-c8cb-8123-822d-c418ea7d2d7b" class="bulleted-list"><li style="list-style-type:disc"><strong>Premium or Contango:</strong> When the futures price is higher than the spot price, the futures market is said to be trading at a <strong>premium</strong>. In commodity markets, this is also called <strong>contango</strong>.</li></ul><ul id="14e84369-c8cb-8121-8d66-da2901f04e99" class="bulleted-list"><li style="list-style-type:disc"><strong>Discount or Backwardation:</strong> If the futures price is lower than the spot price, the futures market is said to be trading at a <strong>discount</strong>. In commodity markets, this is also called <strong>backwardation</strong>.</li></ul><h3 id="14e84369-c8cb-81eb-b407-c3356a075331" class="">Practical Applications of Futures Pricing</h3><p id="14e84369-c8cb-814f-b911-f41774c9df7c" class="">The futures pricing formula is particularly useful for traders who are interested in employing quantitative trading strategies, such as:</p><ul id="14e84369-c8cb-8141-a289-d463364edb39" class="bulleted-list"><li style="list-style-type:disc"><strong>Cash &amp; Carry Arbitrage:</strong> This strategy involves buying the underlying asset in the spot market and simultaneously selling a futures contract on that asset. This strategy is profitable when the futures contract is trading at a significant premium to its fair value.</li></ul><ul id="14e84369-c8cb-81ee-bcca-f48024ee4afa" class="bulleted-list"><li style="list-style-type:disc"><strong>Calendar Spreads:</strong> A calendar spread involves buying a futures contract with a nearer expiry date and selling a futures contract with a further expiry date on the same underlying asset. This strategy seeks to profit from changes in the spread between the two contracts.</li></ul><p id="14e84369-c8cb-81d1-b829-ecefbcb062eb" class="">The sources provide several examples of how these strategies can be implemented.</p><p id="14e84369-c8cb-814a-8205-df80e8c266fb" class="">For example, one source describes a scenario where the spot price of Wipro is 653, the risk-free rate is 8.35%, and the time to expiry of the current month futures contract is 30 days. Using the futures pricing formula, we can calculate the fair value of the futures contract to be 658. However, let&#x27;s say the futures contract is trading at 700 in the market, significantly higher than its fair value. This presents an opportunity for a cash &amp; carry arbitrage trade, where a trader can:</p><ol type="1" id="14e84369-c8cb-817c-93e1-f512064fde65" class="numbered-list" start="1"><li><strong>Buy Wipro in the spot market at 653.</strong></li></ol><ol type="1" id="14e84369-c8cb-81ec-a67c-e28103361c12" class="numbered-list" start="2"><li><strong>Sell the current month Wipro futures contract at 700.</strong></li></ol><p id="14e84369-c8cb-81fa-b31d-c61cd1bb63e1" class="">By doing so, the trader has locked in a profit of 47 points (700 - 653).</p><p id="14e84369-c8cb-8155-83d2-edb983e4c2a6" class="">The sources also provide insights into calendar spread strategies, explaining how to identify opportunities and structure trades based on the relative pricing of futures contracts with different expiry dates.</p><p id="14e84369-c8cb-8173-b530-f0af10f94c83" class="">For instance, one source discusses a calendar spread strategy involving the USD/INR currency pair. The source highlights that when the spread between two futures contracts (e.g., July and August) deviates from its normal range, it presents a trading opportunity. By analyzing the spread and determining whether it is overvalued or undervalued, traders can structure a calendar spread by buying one contract and selling the other to potentially profit from the spread&#x27;s convergence.</p><h3 id="14e84369-c8cb-8116-b7f8-e11e1b566978" class="">Trading Considerations</h3><ul id="14e84369-c8cb-816b-a86d-d15e429d8ccb" class="bulleted-list"><li style="list-style-type:disc"><strong>Margins:</strong> When trading futures contracts, traders are required to deposit a <strong>margin</strong>, which is a percentage of the contract value. Margins act as a form of security for the exchange and help mitigate counterparty risk. The amount of margin required varies depending on the volatility of the underlying asset.</li></ul><ul id="14e84369-c8cb-812a-84c0-c69675be08a1" class="bulleted-list"><li style="list-style-type:disc"><strong>Liquidity:</strong> The <strong>liquidity</strong> of a futures contract refers to the ease with which it can be bought or sold in the market. A liquid contract will have a large number of buyers and sellers, which will result in tighter bid-ask spreads and lower impact costs.</li></ul><ul id="14e84369-c8cb-81fc-a24b-e54203af4016" class="bulleted-list"><li style="list-style-type:disc"><strong>Impact Cost:</strong> <strong>Impact cost</strong> is the implicit cost incurred due to market price movement when a trader places a buy or sell order. It is calculated as the percentage difference between the expected price of a trade and the price at which it is executed.</li></ul><ul id="14e84369-c8cb-811c-bdf6-e35fe223d198" class="bulleted-list"><li style="list-style-type:disc"><strong>Rollover:</strong> Futures contracts have a finite lifespan and expire on a predetermined date. To maintain a futures position beyond the expiry date, traders need to engage in a <strong>rollover</strong>, which involves closing out the expiring contract and opening a new contract with a later expiry date.</li></ul><p id="14e84369-c8cb-8126-9101-d573a26b3f3a" class=""><strong>Futures contracts are leveraged instruments, meaning that a small change in the price of the underlying asset can result in a large change in the value of the futures contract. Traders should carefully consider the risks involved before trading futures.</strong></p><p id="14e84369-c8cb-8122-91fe-c835984b1d0d" class="">The sources provide valuable information for traders interested in using quantitative strategies like calendar spreads and index arbitrage. The provided examples, combined with the discussion of key concepts like futures pricing, basis, and trading considerations, equip traders with a deeper understanding of how to approach these strategies.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Module 3: Fundamental Analysis</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="14e84369-c8cb-8150-bf0d-cb51d3e95bb0" class="page sans"><header><h1 class="page-title">Module 3: Fundamental Analysis</h1><p class="page-description"></p></header><div class="page-body"><h2 id="14e84369-c8cb-8190-903a-e4f57e5a1e6d" class="">Shifting from a Trader to an Investor Mindset</h2><h3 id="14e84369-c8cb-81f1-8212-f4fbc16ed79c" class="">Trader vs. Investor: Key Differences</h3><ul id="14e84369-c8cb-81c3-8d97-cc9a78e0c45e" class="bulleted-list"><li style="list-style-type:disc"><strong>Time Horizon:</strong> Traders typically operate on short timeframes, ranging from minutes to weeks. Their focus is on capitalizing on short-term price fluctuations. Investors, on the other hand, adopt a long-term perspective, often holding investments for years.</li></ul><ul id="14e84369-c8cb-819b-839c-e1e5f3fc34d9" class="bulleted-list"><li style="list-style-type:disc"><strong>Risk Tolerance:</strong> Traders often accept higher levels of risk, employing leverage and actively managing their positions. Investors prioritize capital preservation and seek consistent, long-term growth. They tend to be more risk-averse, focusing on fundamental analysis and long-term value creation.</li></ul><ul id="14e84369-c8cb-8180-9e42-d89132433e1c" class="bulleted-list"><li style="list-style-type:disc"><strong>Analysis Techniques:</strong> Traders predominantly rely on technical analysis, using charts, patterns, and indicators to identify trading opportunities. Investors emphasize fundamental analysis, evaluating a company&#x27;s financial health, management quality, industry dynamics, and growth potential.</li></ul><ul id="14e84369-c8cb-81e4-88c2-f9b1c18beb60" class="bulleted-list"><li style="list-style-type:disc"><strong>Profit Generation:</strong> Traders seek profits from frequent, short-term trades, capitalizing on price movements. Investors aim for long-term wealth creation through capital appreciation and dividends.</li></ul><ul id="14e84369-c8cb-810a-983b-e671fd58aac4" class="bulleted-list"><li style="list-style-type:disc"><strong>Emotional Approach:</strong> Traders need to manage emotions effectively, as their frequent trading activity exposes them to greater market volatility. Investors benefit from a patient and disciplined approach, focusing on the long-term fundamentals of their investments.</li></ul><h3 id="14e84369-c8cb-8141-9bd2-e78ebcecfe27" class="">Developing an Investment Mindset</h3><p id="14e84369-c8cb-81ab-bff7-d1d9daa26be3" class="">To excel in fundamental analysis, adopting an investment mindset is crucial. Here&#x27;s how to cultivate the right perspective:</p><ul id="14e84369-c8cb-814c-8d0d-e54bf3190df5" class="bulleted-list"><li style="list-style-type:disc"><strong>Patience:</strong> Fundamental analysis requires patience, as the intrinsic value of a company may take time to reflect in its stock price. Resist the urge for quick gains and focus on long-term growth.</li></ul><ul id="14e84369-c8cb-81cf-92a6-cf368f9cb4e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Discipline:</strong> Adhere to your investment strategy and avoid impulsive decisions based on market noise or short-term fluctuations. A well-defined investment plan and a disciplined approach are crucial for long-term success.</li></ul><ul id="14e84369-c8cb-8179-814e-c3c498342d30" class="bulleted-list"><li style="list-style-type:disc"><strong>Focus on Value:</strong> Shift your focus from short-term price movements to understanding the underlying value of a business. Learn to analyze financial statements, assess industry trends, and evaluate a company&#x27;s competitive advantage to identify businesses with long-term growth potential.</li></ul><ul id="14e84369-c8cb-81d3-8ace-f853b6801f86" class="bulleted-list"><li style="list-style-type:disc"><strong>Long-Term Perspective:</strong> Instead of chasing quick profits, embrace the concept of long-term compounding. Invest in companies you believe in and hold your investments for an extended period, allowing them to grow and generate returns.</li></ul><ul id="14e84369-c8cb-81ac-89eb-e949c0e9b02a" class="bulleted-list"><li style="list-style-type:disc"><strong>Research and Due Diligence:</strong> Dedicate time to researching and understanding the businesses you invest in. Analyze their financials, evaluate their management team, and assess their industry position to make informed investment decisions.</li></ul><p id="14e84369-c8cb-8121-86e4-d6153549d2e0" class="">The sources emphasize that while technical analysis can complement fundamental analysis, it shouldn&#x27;t be the primary driver of investment decisions.  A solid understanding of a company&#x27;s fundamentals is essential for making informed long-term investments.</p><hr id="14e84369-c8cb-811f-950c-c0ccc61fef47"/><h2 id="14e84369-c8cb-812f-bbb2-db509e7281c4" class="">A User-Friendly Guide to Understanding Financial Statements</h2><h3 id="14e84369-c8cb-810f-b458-d6e9b4d1b90d" class=""><strong>Profit and Loss (P&amp;L) Statement</strong></h3><ul id="14e84369-c8cb-8101-af6a-c7a10bb05427" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> The P&amp;L statement, also known as the Income Statement or Statement of Operations, summarizes a company&#x27;s financial performance over a specific period, typically a fiscal year or a quarter. It illustrates how much revenue a company generated, and the expenses incurred to generate that revenue, ultimately revealing the company&#x27;s profitability.</li></ul><ul id="14e84369-c8cb-813f-9644-c65c80064ead" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Components:</strong><ul id="14e84369-c8cb-818f-a416-e6531948ee44" class="bulleted-list"><li style="list-style-type:circle"><strong>Revenue:</strong> The top line of the P&amp;L statement represents the total revenue from a company&#x27;s operations, including sales of products and services. It also includes other operating income, such as incidental revenue, and other income from non-operating sources.</li></ul><ul id="14e84369-c8cb-81df-87b8-d0165f21670f" class="bulleted-list"><li style="list-style-type:circle"><strong>Expenses:</strong> Expenses are categorized according to their function, often using the cost of sales method. The P&amp;L statement details the cost of goods sold, employee benefits, depreciation and amortization, finance costs, and other expenses.<ul id="14e84369-c8cb-8177-bda7-d5fb21bac6fc" class="bulleted-list"><li style="list-style-type:square"><strong>Depreciation and Amortization:</strong> These are non-cash expenses that represent the gradual reduction in the value of assets over time. Depreciation applies to tangible assets, while amortization applies to intangible assets.</li></ul><ul id="14e84369-c8cb-816b-9403-c360692b04b1" class="bulleted-list"><li style="list-style-type:square"><strong>Finance Costs:</strong> This represents the interest expenses and other charges incurred by the company for borrowing money.</li></ul></li></ul><ul id="14e84369-c8cb-818c-9208-caad9463f368" class="bulleted-list"><li style="list-style-type:circle"><strong>Profit Before Tax (PBT):</strong> PBT is calculated by subtracting total expenses from total revenue, excluding any exceptional items.</li></ul><ul id="14e84369-c8cb-816b-a7f1-eb9395d40643" class="bulleted-list"><li style="list-style-type:circle"><strong>Profit After Tax (PAT):</strong> PAT, also known as net income, is derived by subtracting applicable taxes from PBT.</li></ul><ul id="14e84369-c8cb-810d-9795-c19a300c284e" class="bulleted-list"><li style="list-style-type:circle"><strong>Earnings Per Share (EPS):</strong> A crucial metric for investors, EPS reflects a company&#x27;s profitability on a per-share basis. It is calculated by dividing PAT by the total number of outstanding ordinary shares.</li></ul></li></ul><h3 id="14e84369-c8cb-81a6-855d-d2cc4df0730a" class=""><strong>Balance Sheet</strong></h3><ul id="14e84369-c8cb-8107-ba7c-f7c09a9d71a4" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> The Balance Sheet, also known as the Statement of Financial Position, presents a snapshot of a company&#x27;s financial health at a specific point in time. It outlines what the company owns (assets), what it owes (liabilities), and the shareholders&#x27; equity.</li></ul><ul id="14e84369-c8cb-81a4-9145-ec78f7b5b370" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Components:</strong><ul id="14e84369-c8cb-8199-9d40-fa453467e08a" class="bulleted-list"><li style="list-style-type:circle"><strong>Assets:</strong> Resources controlled by the company that provide future economic benefits. Assets are categorized as:<ul id="14e84369-c8cb-814d-a25a-cdc65c9f4e91" class="bulleted-list"><li style="list-style-type:square"><strong>Non-Current Assets:</strong> Assets with a useful life extending beyond one year, including fixed assets like property, plant, and equipment.</li></ul><ul id="14e84369-c8cb-81b9-a8d4-f067c63aeb24" class="bulleted-list"><li style="list-style-type:square"><strong>Current Assets:</strong> Assets expected to be converted into cash or used up within one year, including cash, accounts receivable, and inventory.<ul id="14e84369-c8cb-8132-8bbd-dfacb65ceae1" class="bulleted-list"><li style="list-style-type:disc"><strong>Gross Block:</strong> The original cost of acquiring assets, including depreciation.</li></ul><ul id="14e84369-c8cb-8135-880c-d01acce375a0" class="bulleted-list"><li style="list-style-type:disc"><strong>Net Block:</strong> The value of assets after deducting accumulated depreciation.</li></ul></li></ul></li></ul><ul id="14e84369-c8cb-81e4-97e2-d1ea6aa6cc0e" class="bulleted-list"><li style="list-style-type:circle"><strong>Liabilities:</strong> Obligations or debts arising from past transactions that the company is expected to settle. Liabilities are categorized as:<ul id="14e84369-c8cb-8168-86b5-f8039c4aaa36" class="bulleted-list"><li style="list-style-type:square"><strong>Shareholders&#x27; Funds:</strong> Represents the owners&#x27; claim on the company&#x27;s assets. It includes share capital, reserves, and surplus (retained earnings).</li></ul><ul id="14e84369-c8cb-8100-ae66-cc9a8ee7b038" class="bulleted-list"><li style="list-style-type:square"><strong>Non-Current Liabilities:</strong> Long-term obligations with a maturity exceeding one year, including long-term debt and deferred tax liabilities.</li></ul><ul id="14e84369-c8cb-817a-a43a-da4a47047757" class="bulleted-list"><li style="list-style-type:square"><strong>Current Liabilities:</strong> Short-term obligations due within one year, including short-term borrowings, accounts payable, and accrued expenses.</li></ul></li></ul><ul id="14e84369-c8cb-817b-9aa0-e23876c0b103" class="bulleted-list"><li style="list-style-type:circle"><strong>Balance Sheet Equation:</strong> The fundamental equation of the balance sheet is: <strong>Assets = Liabilities + Shareholders&#x27; Equity</strong>. This equation demonstrates the balance between what a company owns and its sources of financing.</li></ul></li></ul><h3 id="14e84369-c8cb-81d1-ba1a-d3590ffc67de" class=""><strong>Cash Flow Statement</strong></h3><ul id="14e84369-c8cb-81eb-80ef-da2b4a58b001" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> The Cash Flow Statement provides insights into a company&#x27;s cash management and highlights the sources and uses of cash during a specific period. It reveals the actual cash position of the company, which may differ from the profitability depicted in the P&amp;L statement.</li></ul><ul id="14e84369-c8cb-81f3-8f3d-daaacba72653" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Components:</strong><ul id="14e84369-c8cb-813f-89c9-d23617aa7085" class="bulleted-list"><li style="list-style-type:circle"><strong>Operating Activities:</strong> Cash flows related to a company&#x27;s core business operations, such as cash received from customers and cash paid to suppliers and employees.</li></ul><ul id="14e84369-c8cb-81bc-b424-eeff2f307c6d" class="bulleted-list"><li style="list-style-type:circle"><strong>Investing Activities:</strong> Cash flows associated with the acquisition and disposal of long-term assets, including property, plant, equipment, and investments.</li></ul><ul id="14e84369-c8cb-818d-88cb-c3aa2b6bebba" class="bulleted-list"><li style="list-style-type:circle"><strong>Financing Activities:</strong> Cash flows related to the company&#x27;s financing structure, including the issuance and repayment of debt, equity transactions, and dividend payments.</li></ul></li></ul><ul id="14e84369-c8cb-8155-b964-f3ca11be3429" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Insights:</strong><ul id="14e84369-c8cb-8162-a058-c9b9fa57e5ab" class="bulleted-list"><li style="list-style-type:circle">A positive cash flow from operating activities is a strong indicator of financial well-being.</li></ul><ul id="14e84369-c8cb-81fb-ba0f-f06ea67b71d8" class="bulleted-list"><li style="list-style-type:circle">Analysing the cash flow statement helps investors understand a company&#x27;s liquidity, its ability to generate cash, and its management of cash resources.</li></ul><ul id="14e84369-c8cb-81a4-9cf8-c42c183a1f13" class="bulleted-list"><li style="list-style-type:circle">The cash flow statement connects with the balance sheet, as the net cash flow for the year is reflected in the cash and cash equivalents line item on the balance sheet.</li></ul></li></ul><h3 id="14e84369-c8cb-81a2-a456-cc7c5d6b52c1" class=""><strong>Connecting the Financial Statements</strong></h3><ul id="14e84369-c8cb-8152-8ea4-c213ec1aae27" class="bulleted-list"><li style="list-style-type:disc">The three financial statements are interconnected, reflecting different aspects of a company&#x27;s financial performance and position.</li></ul><ul id="14e84369-c8cb-816b-8d5d-c36c32e71f99" class="bulleted-list"><li style="list-style-type:disc">The P&amp;L statement feeds into the balance sheet through retained earnings (surplus), which is added to shareholders&#x27; equity.</li></ul><ul id="14e84369-c8cb-815a-9e80-ddb217bd9cad" class="bulleted-list"><li style="list-style-type:disc">The cash flow statement explains the changes in the cash and cash equivalents line item on the balance sheet.</li></ul><ul id="14e84369-c8cb-8140-b4a9-d0eb74aff0a4" class="bulleted-list"><li style="list-style-type:disc">Analysing these statements together provides a comprehensive understanding of a company&#x27;s financial performance, its profitability, its financial strength, and its cash management practices.</li></ul><p id="14e84369-c8cb-81c5-a1af-ceec90d496fc" class="">By examining these financial statements, investors can evaluate a company&#x27;s financial health, its ability to generate profits, manage its assets and liabilities, and generate cash flows.  This information is crucial for making informed investment decisions.</p><hr id="14e84369-c8cb-81b9-a965-cb4d50c76ff0"/><h2 id="14e84369-c8cb-8119-9e03-e8ffc7527951" class="">Creating an Investment Checklist and Performing Due Diligence</h2><p id="14e84369-c8cb-81be-8990-d16ddcaff066" class="">This explanation will walk you through the process of developing a checklist to use when performing fundamental analysis, as well as how to perform equity research due diligence.</p><h3 id="14e84369-c8cb-8156-9127-e2447a003019" class="">The Importance of a Checklist</h3><p id="14e84369-c8cb-8128-80b4-d54a0619fc63" class=""><strong>A checklist is a crucial tool for investors engaged in fundamental analysis</strong>. The checklist serves as a framework for evaluating a company&#x27;s investable grade attributes, which are the qualities that make it a potentially worthwhile investment. <strong>Think of it as a customized guide to help you decide where to put your money.</strong></p><p id="14e84369-c8cb-8152-9d2d-f24fe09224e3" class=""><strong>It&#x27;s important to remember that there&#x27;s no single, universally applicable checklist.</strong> What matters most to you as an investor might differ from another investor&#x27;s priorities. For example, while corporate governance might be a top priority for one investor, another might prioritize a company’s financial performance. <strong>The key is that your checklist includes factors that you can justify with sound logic, ensuring that your investment decisions are well-informed.</strong></p><h3 id="14e84369-c8cb-81ed-b42c-e986002fb972" class="">Building Your Checklist</h3><p id="14e84369-c8cb-81b1-a7c1-e0bbb89259d1" class="">The sources provide a sample checklist to help you get started. This checklist is presented as a table with these columns:  &quot;Sl No,&quot; &quot;Variable,&quot; &quot;Comment,&quot; and &quot;What does it signify.&quot;  Here are a few of the items included in this sample checklist, along with explanations of what they mean:</p><ul id="14e84369-c8cb-81f0-88da-f45758dbf4a0" class="bulleted-list"><li style="list-style-type:disc"><strong>Net Profit Growth:</strong> This item examines whether the company&#x27;s net profit is growing at a rate consistent with its gross profit growth. Ideally, revenue growth should align with profit growth.</li></ul><ul id="14e84369-c8cb-815d-883c-d3a1ada5c70f" class="bulleted-list"><li style="list-style-type:disc"><strong>EPS:</strong> EPS, or earnings per share, should be consistent, indicating stability in the company&#x27;s profitability.</li></ul><ul id="14e84369-c8cb-81a4-93e7-eea994b5152e" class="bulleted-list"><li style="list-style-type:disc"><strong>Debt-to-Equity Ratio:</strong> This ratio should be less than 1, suggesting that the company is not excessively reliant on debt financing. High debt levels can be a risk factor.</li></ul><ul id="14e84369-c8cb-81f9-9def-d8ea9e33073b" class="bulleted-list"><li style="list-style-type:disc"><strong>Inventory Turnover Ratio:</strong> This ratio measures how efficiently the company manages its inventory. A higher ratio indicates that inventory is sold quickly, which is generally considered a positive sign.</li></ul><ul id="14e84369-c8cb-819a-83fd-f96a72fb09eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Sales vs. Receivables:</strong> Ideally, sales should be backed by actual cash rather than receivables. If a company relies heavily on receivables, it might suggest that they are struggling to collect payments, which could be a warning sign.</li></ul><p id="14e84369-c8cb-8106-a3b3-fb58503ec5ab" class=""><strong>It is highly recommended to develop your own customized checklist by adding and removing variables as you gain experience and insight into the market.</strong></p><h3 id="14e84369-c8cb-817d-9c2a-f2d9883006cf" class="">The Steps of Equity Research Due Diligence</h3><p id="14e84369-c8cb-810d-9999-e50c014f0ed7" class=""><strong>Equity research due diligence involves a three-stage process:</strong></p><ol type="1" id="14e84369-c8cb-818f-99a0-d979ac93e68b" class="numbered-list" start="1"><li><strong>Understanding the Business:</strong> This stage involves thoroughly researching a company to gain a deep understanding of its operations, management, competitive landscape, and industry dynamics. This stage is crucial for building conviction in your investment decisions.</li></ol><ol type="1" id="14e84369-c8cb-8161-8967-c4b8aa380268" class="numbered-list" start="2"><li><strong>Application of the Checklist:</strong> In this stage, you apply your chosen checklist to evaluate the company’s financial performance, assessing its profitability, efficiency, financial strength, and growth potential.</li></ol><ol type="1" id="14e84369-c8cb-81be-980e-fc68094f6979" class="numbered-list" start="3"><li><strong>Valuation:</strong> The final stage involves estimating the intrinsic value of the company. Intrinsic value represents the true worth of a business, considering its future cash flows, growth prospects, and risk profile. This process typically involves techniques such as Discounted Cash Flow (DCF) analysis.</li></ol><h3 id="14e84369-c8cb-8101-99d0-ca91b31aee41" class="">Stage 1: Understanding the Business</h3><p id="14e84369-c8cb-8164-9277-f4255c85f211" class=""><strong>The primary goal of stage 1 is to gather as much information as possible about the company and its business</strong>. Analyzing the stock price alone might be sufficient for short-term trading, but for long-term investment, understanding the business is essential. The more you know about the company, the greater your conviction will be to hold the investment for the long term, especially during periods of market volatility.</p><p id="14e84369-c8cb-81de-a13d-f99c27d889b4" class=""><strong>The best resources for gathering this information are the company&#x27;s website and its annual reports, particularly the last five years&#x27; worth.</strong> To structure this research effectively, you should develop a list of questions to answer.</p><p id="14e84369-c8cb-81a6-b25e-db412abee6b7" class="">The sources provide a sample list of questions to help you get started:</p><ul id="14e84369-c8cb-8173-a982-ee0b4bb94f90" class="bulleted-list"><li style="list-style-type:disc"><strong>What does the company do?</strong> (This establishes a basic understanding of the business)</li></ul><ul id="14e84369-c8cb-81e3-a176-ef017b7938fb" class="bulleted-list"><li style="list-style-type:disc"><strong>Who are its promoters? What are their backgrounds?</strong> (This helps you understand who is behind the business, perform a basic background check, and assess potential red flags, such as criminal activity or political affiliations)</li></ul><ul id="14e84369-c8cb-8126-9bb0-cedfeec13d18" class="bulleted-list"><li style="list-style-type:disc"><strong>What do they manufacture (if it&#x27;s a manufacturing company)? What is their manufacturing process?</strong> (This gives you insights into the company&#x27;s operations)</li></ul><ul id="14e84369-c8cb-8166-81d4-e766eb166a53" class="bulleted-list"><li style="list-style-type:disc"><strong>Where do they sell (local, national, export)?</strong> (This reveals their market reach and potential for growth)</li></ul><ul id="14e84369-c8cb-8101-aba2-f5bdff00db39" class="bulleted-list"><li style="list-style-type:disc"><strong>Who are their competitors? How intense is the competition?</strong> (Understanding the competitive landscape is crucial for assessing the company’s future prospects.)</li></ul><p id="14e84369-c8cb-818a-8f2d-d5662a56d732" class=""><strong>As you explore these questions, you will naturally come up with new questions, leading you to dig deeper into the company and gaining a better grasp of its operations and potential.</strong></p><p id="14e84369-c8cb-810f-869d-cfd6eff2b703" class=""><strong>Red Flags:</strong> If you uncover any red flags during this research process, such as questionable management practices, ethical concerns, or hidden liabilities, it is advisable to stop researching the company and move on, regardless of how attractive its business might seem.</p><h3 id="14e84369-c8cb-810f-915f-f14aab96595e" class="">Stage 2: Applying the Checklist</h3><p id="14e84369-c8cb-8184-927d-dedf8090baa3" class=""><strong>Stage 2 focuses on understanding the company&#x27;s financial performance and determining whether it aligns with the attractive aspects of its business model</strong>. You will use the checklist you created earlier to evaluate the company&#x27;s performance across various financial metrics.  <strong>If the financial performance doesn&#x27;t match the business model, the company probably doesn&#x27;t have investable grade attributes.</strong></p><p id="14e84369-c8cb-812e-b5c4-c36ea2b6621e" class=""><strong>It&#x27;s important to systematically examine each checklist item.</strong> For instance, when looking at ARBL, the sources note its robust net profit growth, consistent EPS, low debt-to-equity ratio, efficient inventory management (as indicated by the inventory turnover ratio), and strong cash flow from operations.</p><h3 id="14e84369-c8cb-814d-83cd-de47ca41df97" class="">Stage 3: Valuation</h3><p id="14e84369-c8cb-81f3-9b6c-fd58afe6b157" class=""><strong>Stage 3 focuses on determining whether the company&#x27;s stock is trading at the right price</strong>. A great investment requires not only a great business but also a great price. You will use a valuation technique, such as DCF analysis, to estimate the intrinsic value of the stock. <strong>The intrinsic value represents the perceived stock price based on the company&#x27;s future cash flows.</strong></p><p id="14e84369-c8cb-811c-ad5f-ea929e23e445" class="">You can compare the intrinsic value to the current market price to determine whether the stock is undervalued or overvalued. <strong>A stock trading below its intrinsic value might be a good investment opportunity, while a stock trading above its intrinsic value might be considered overpriced.</strong></p><h3 id="14e84369-c8cb-8160-b397-c7ed84455268" class="">Additional Considerations</h3><ul id="14e84369-c8cb-81d9-9f48-cc6174c22e59" class="bulleted-list"><li style="list-style-type:disc"><strong>The Moat:</strong> Warren Buffett popularized the term &quot;economic moat,&quot; which refers to a company&#x27;s sustainable competitive advantage that protects its long-term profits. When evaluating a company, it&#x27;s crucial to identify its moat and assess its strength and durability. Wider moats are generally better, indicating greater protection from competitors.</li></ul><ul id="14e84369-c8cb-81f8-8ebe-fd03470b7375" class="bulleted-list"><li style="list-style-type:disc"><strong>Generating Stock Ideas:</strong> Before you can even begin the due diligence process, you need to identify potential investment opportunities. Here are a few methods for generating stock ideas:<ul id="14e84369-c8cb-814a-8c95-cdb23a4ef0ee" class="bulleted-list"><li style="list-style-type:circle"><strong>General Observation:</strong> Pay attention to the world around you and observe emerging trends, consumer behavior, and promising businesses. Peter Lynch, a renowned investor, strongly advocated this method.</li></ul><ul id="14e84369-c8cb-8146-99a6-e622bf4d9478" class="bulleted-list"><li style="list-style-type:circle"><strong>Screening:</strong> Use financial websites and databases to screen companies based on specific criteria, such as industry, market capitalization, financial ratios, or growth rates.</li></ul><ul id="14e84369-c8cb-815f-bfad-cde74b1ba98e" class="bulleted-list"><li style="list-style-type:circle"><strong>Circle of Competence:</strong> Focus on industries or sectors you understand well. Leverage your knowledge and experience to identify potentially undervalued companies within your areas of expertise.</li></ul></li></ul><ul id="14e84369-c8cb-81de-8d40-c87d29b27fd2" class="bulleted-list"><li style="list-style-type:disc"><strong>Watch List:</strong> Create a watch list of interesting companies you come across. These companies may not immediately fit your investment criteria, but they might become suitable investments in the future as business conditions change or the companies mature.</li></ul><p id="14e84369-c8cb-816e-bc16-ebda9d8a1238" class=""><strong>Successful investing requires patience, discipline, and a commitment to continuous learning</strong>. Embrace these qualities and leverage the tools and techniques discussed here to develop a sound investment strategy and improve your chances of long-term success.</p><hr id="14e84369-c8cb-81d5-b7e7-c54751928eb0"/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

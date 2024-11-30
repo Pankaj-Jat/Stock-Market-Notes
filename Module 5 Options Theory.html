@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Module 5: Options Theory</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="14e84369-c8cb-818e-811a-e47aee7c9c07" class="page sans"><header><h1 class="page-title">Module 5: Options Theory</h1><p class="page-description"></p></header><div class="page-body"><h2 id="14e84369-c8cb-8180-9419-cde6ad9d33e3" class="">Call and Put Option Basics</h2><p id="14e84369-c8cb-819c-badd-d7f0a7b08418" class="">This section introduces the fundamentals of call and put options, explaining their characteristics, payoff structures, and the differences between buying and selling options. It also covers the concept of moneyness, including in-the-money (ITM), at-the-money (ATM), and out-of-the-money (OTM) options.</p><h3 id="14e84369-c8cb-814a-bb4f-f834150ffb51" class="">Call Options</h3><ul id="14e84369-c8cb-8145-8e71-d6795c57ec1e" class="bulleted-list"><li style="list-style-type:disc">A <strong>call option</strong> gives the buyer the <strong>right, but not the obligation,</strong> to buy an underlying asset at a specified price (<strong>strike price</strong>) on or before a certain date (<strong>expiry date</strong>).</li></ul><ul id="14e84369-c8cb-81d2-92e2-c2a5b83476c3" class="bulleted-list"><li style="list-style-type:disc">The seller of a call option, also known as the <strong>option writer</strong>, is obligated to sell the asset if the buyer exercises their right.</li></ul><ul id="14e84369-c8cb-8194-9c63-e13931dbce06" class="bulleted-list"><li style="list-style-type:disc">Buyers pay a <strong>premium</strong> to sellers for this right.</li></ul><ul id="14e84369-c8cb-8145-a7cc-c77f0ff357af" class="bulleted-list"><li style="list-style-type:disc"><strong>Buyers of call options</strong> are <strong>bullish</strong> on the underlying asset. They profit when the asset&#x27;s price increases above the strike price plus the premium paid.</li></ul><ul id="14e84369-c8cb-8151-83b2-c43db23b9c38" class="bulleted-list"><li style="list-style-type:disc"><strong>Sellers of call options</strong> are <strong>bearish</strong> or <strong>neutral</strong> on the underlying asset. They profit when the asset&#x27;s price remains at or below the strike price. Their maximum profit is limited to the premium received.</li></ul><h3 id="14e84369-c8cb-81cb-93b6-f26dc27f16bd" class="">Put Options</h3><ul id="14e84369-c8cb-8187-8c03-e9ef26741b36" class="bulleted-list"><li style="list-style-type:disc">A <strong>put option</strong> gives the buyer the <strong>right, but not the obligation,</strong> to sell an underlying asset at a specified price (<strong>strike price</strong>) on or before a certain date (<strong>expiry date</strong>).</li></ul><ul id="14e84369-c8cb-8150-857f-d630d083b34e" class="bulleted-list"><li style="list-style-type:disc">The seller of a put option is obligated to buy the asset if the buyer exercises their right.</li></ul><ul id="14e84369-c8cb-8161-aefd-c436adf3420e" class="bulleted-list"><li style="list-style-type:disc">Buyers pay a <strong>premium</strong> to sellers for this right.</li></ul><ul id="14e84369-c8cb-8118-af08-f2f1b155aa43" class="bulleted-list"><li style="list-style-type:disc"><strong>Buyers of put options</strong> are <strong>bearish</strong> on the underlying asset. They profit when the asset&#x27;s price decreases below the strike price minus the premium paid.</li></ul><ul id="14e84369-c8cb-8162-9655-c78d27aa3800" class="bulleted-list"><li style="list-style-type:disc"><strong>Sellers of put options</strong> are <strong>bullish</strong> or <strong>neutral</strong> on the underlying asset. They profit when the asset&#x27;s price remains at or above the strike price. Their maximum profit is limited to the premium received.</li></ul><h3 id="14e84369-c8cb-8195-b381-cbffb238a0ac" class="">Option Moneyness</h3><p id="14e84369-c8cb-81eb-a9aa-e523961bb572" class=""><strong>Moneyness</strong> describes the relationship between an option&#x27;s strike price and the current market price of the underlying asset. There are three main classifications:</p><ul id="14e84369-c8cb-810b-8a83-cd5507a3113c" class="bulleted-list"><li style="list-style-type:disc"><strong>In-the-Money (ITM):</strong> An option is ITM if it would be profitable to exercise immediately.<ul id="14e84369-c8cb-8101-a612-d943bc197160" class="bulleted-list"><li style="list-style-type:circle">A call option is ITM when the <strong>spot price</strong> is <strong>higher</strong> than the strike price.</li></ul><ul id="14e84369-c8cb-814e-9fce-ee3b16482041" class="bulleted-list"><li style="list-style-type:circle">A put option is ITM when the <strong>spot price</strong> is <strong>lower</strong> than the strike price.</li></ul></li></ul><ul id="14e84369-c8cb-813b-b470-e5762f461707" class="bulleted-list"><li style="list-style-type:disc"><strong>At-the-Money (ATM):</strong> An option is ATM when the strike price is equal to or very close to the current market price of the underlying asset.</li></ul><ul id="14e84369-c8cb-8193-9fb2-ef3ccceb1ee8" class="bulleted-list"><li style="list-style-type:disc"><strong>Out-of-the-Money (OTM):</strong> An option is OTM if it would not be profitable to exercise immediately.<ul id="14e84369-c8cb-8150-890f-e9ed8df3845a" class="bulleted-list"><li style="list-style-type:circle">A call option is OTM when the <strong>spot price</strong> is <strong>lower</strong> than the strike price.</li></ul><ul id="14e84369-c8cb-818a-be55-cfc0fda00e45" class="bulleted-list"><li style="list-style-type:circle">A put option is OTM when the <strong>spot price</strong> is <strong>higher</strong> than the strike price.</li></ul></li></ul><h3 id="14e84369-c8cb-817a-a716-da1e5432e65b" class="">Differences Between Buying and Selling Options</h3><table id="14e84369-c8cb-81f4-8fe9-e59d2ae9da16" class="simple-table"><tbody><tr id="14e84369-c8cb-8124-99db-e5c79a17619a"><td id="k{M]" class="block-color-yellow" style="width:145px">Feature</td><td id="Qmeu" class="block-color-yellow" style="width:420px">Buying Options</td><td id="NNq]" class="block-color-yellow" style="width:580px">Selling Options</td></tr><tr id="14e84369-c8cb-81f5-a414-ccb27027b8a1"><td id="k{M]" class="block-color-yellow" style="width:145px">Market outlook</td><td id="Qmeu" class="" style="width:420px">Bullish (Call) or Bearish (Put)</td><td id="NNq]" class="" style="width:580px">Bearish or Neutral (Call) or Bullish or Neutral (Put)</td></tr><tr id="14e84369-c8cb-814a-a548-c3a416b3b8c4"><td id="k{M]" class="block-color-yellow" style="width:145px">Profit potential</td><td id="Qmeu" class="" style="width:420px">Unlimited (Call) or Unlimited (Put)</td><td id="NNq]" class="" style="width:580px">Limited to premium received (Call) or Limited to premium received (Put)</td></tr><tr id="14e84369-c8cb-819b-99ac-e3c603849d3e"><td id="k{M]" class="block-color-yellow" style="width:145px">Loss potential</td><td id="Qmeu" class="" style="width:420px">Limited to premium paid (Call) or Limited to premium paid (Put)</td><td id="NNq]" class="" style="width:580px">Unlimited (Call) or Unlimited (Put)</td></tr><tr id="14e84369-c8cb-8149-b79c-cbe5bf7e227a"><td id="k{M]" class="block-color-yellow" style="width:145px">Margin requirement</td><td id="Qmeu" class="" style="width:420px">Premium paid upfront</td><td id="NNq]" class="" style="width:580px">Margin required, similar to futures trading</td></tr><tr id="14e84369-c8cb-81af-b7ba-dad319656fdf"><td id="k{M]" class="block-color-yellow" style="width:145px">Risk</td><td id="Qmeu" class="" style="width:420px">Lower</td><td id="NNq]" class="" style="width:580px">Higher</td></tr><tr id="14e84369-c8cb-81e6-b662-cae39cfc82ff"><td id="k{M]" class="block-color-yellow" style="width:145px">Complexity</td><td id="Qmeu" class="" style="width:420px">Lower</td><td id="NNq]" class="" style="width:580px">Higher</td></tr><tr id="14e84369-c8cb-8117-b2f6-fc8cdedcb102"><td id="k{M]" class="block-color-yellow" style="width:145px">Suitable for</td><td id="Qmeu" class="" style="width:420px">Traders with directional view and limited capital</td><td id="NNq]" class="" style="width:580px">Experienced traders with a strong understanding of options, risk management, and margin requirements, who are comfortable with unlimited risk.</td></tr></tbody></table><h3 id="14e84369-c8cb-81ff-97b6-d8384a624753" class="">Key Takeaways</h3><ul id="14e84369-c8cb-81f4-bbc2-ddaba8e35079" class="bulleted-list"><li style="list-style-type:disc">Options provide leverage, allowing traders to control a larger position with a smaller capital outlay compared to buying or selling the underlying asset outright.</li></ul><ul id="14e84369-c8cb-81e4-ba59-d401cf797f19" class="bulleted-list"><li style="list-style-type:disc">Understanding moneyness is crucial for options trading as it helps traders determine the potential profitability of various option strikes.</li></ul><ul id="14e84369-c8cb-81ff-a932-ca655959d07a" class="bulleted-list"><li style="list-style-type:disc">Options trading involves different levels of risk and reward depending on whether you are buying or selling options.</li></ul><ul id="14e84369-c8cb-812c-9fae-e6d83b5c987f" class="bulleted-list"><li style="list-style-type:disc">Thorough research, analysis, and risk management are essential for successful options trading.</li></ul><ul id="14e84369-c8cb-8148-ac40-e8528956a771" class="bulleted-list"><li style="list-style-type:disc">This explanation focuses specifically on the basics of options. Additional study of options theory and strategies is recommended before engaging in options trading.</li></ul><hr id="14e84369-c8cb-8179-b7e2-d799abd34bc9"/><h2 id="14e84369-c8cb-8176-a8fe-ea2227f69ab5" class="">Understanding Option Greeks</h2><p id="14e84369-c8cb-81a4-ad10-f3ca51877d56" class="">This section introduces and explains the key option Greeks: Delta, Theta, Gamma, and Vega. It explains how these Greeks influence option premiums and how they can be used to analyze and manage options positions. The section will also discuss using MS Excel for calculations and exploring normal distribution.</p><h3 id="14e84369-c8cb-81ac-8fb0-fbe7e7a94e9c" class="">Option Greeks: The Forces Behind Premiums</h3><p id="14e84369-c8cb-81b0-bee5-ff57e08cfc0f" class="">Option Greeks are <strong>key measures that represent the sensitivity of an option&#x27;s price to various factors</strong>.  Just as wind speed, sea water density, sea pressure, and the power of a ship affect a ship&#x27;s sailing speed, Option Greeks affect the premium of an option.</p><p id="14e84369-c8cb-8101-a7ed-fc86c9e44c2d" class="">Some Option Greeks increase the premium, while others reduce it. The <strong>Black &amp; Scholes Option Pricing Formula</strong> uses these forces and translates them into a number, which is the premium of the option.</p><p id="14e84369-c8cb-8121-9093-ffd70983efb8" class="">Option Greeks themselves are controlled by the markets, which change constantly. As markets change, the Option Greeks change, and therefore, the option premiums change!</p><h3 id="14e84369-c8cb-81ae-854d-de4e937789b8" class="">Key Option Greeks: Delta, Gamma, Theta, and Vega</h3><p id="14e84369-c8cb-81bc-801c-efd2124bf2fd" class="">Understanding Option Greeks involves achieving the following:</p><ol type="1" id="14e84369-c8cb-8195-bf7a-e831f70dfeb4" class="numbered-list" start="1"><li><strong>Understanding how Option Greeks influence premiums.</strong></li></ol><ol type="1" id="14e84369-c8cb-810f-bd50-fbee72117a75" class="numbered-list" start="2"><li><strong>Determining how premiums are priced, considering Option Greeks and their influence.</strong></li></ol><ol type="1" id="14e84369-c8cb-81f1-9833-f801ed60e82f" class="numbered-list" start="3"><li><strong>Smartly selecting strike prices to trade, keeping the Greeks and pricing in perspective</strong>.</li></ol><p id="14e84369-c8cb-8185-97bd-fd39fb9c0cb3" class="">Before learning about Option Greeks, it&#x27;s crucial to understand the &#x27;Moneyness of an Option&#x27;, which is covered later in this explanation.</p><p id="14e84369-c8cb-8188-9b68-e3d34d2b0ceb" class="">The four main Option Greeks are:</p><ul id="14e84369-c8cb-81eb-98a4-f99f8b0abbe5" class="bulleted-list"><li style="list-style-type:disc"><strong>Delta:</strong> Measures the rate of change of options premium based on the directional movement of the underlying.</li></ul><ul id="14e84369-c8cb-8127-97d9-e502c08c3a1c" class="bulleted-list"><li style="list-style-type:disc"><strong>Gamma:</strong> Rate of change of delta itself.</li></ul><ul id="14e84369-c8cb-8140-9021-e83163e87b03" class="bulleted-list"><li style="list-style-type:disc"><strong>Vega:</strong> Rate of change of premium based on change in volatility.</li></ul><ul id="14e84369-c8cb-8108-b069-d8f5b2e6a876" class="bulleted-list"><li style="list-style-type:disc"><strong>Theta:</strong> Measures the impact on premium based on time left for expiry.</li></ul><h3 id="14e84369-c8cb-81c4-b0a3-e2fb5f2eff34" class="">Delta: Measuring Directional Sensitivity</h3><p id="14e84369-c8cb-8118-b1a4-e17fc0637b48" class="">Delta is an Option Greek that <strong>captures the effect of the market&#x27;s direction on an option&#x27;s premium</strong>. It helps answer the question, &quot;<strong>By how many points will the option premium change for every 1 point change in the underlying?</strong>&quot;.</p><p id="14e84369-c8cb-816c-8809-f30325c3b25c" class=""><strong>Key Characteristics of Delta:</strong></p><ul id="14e84369-c8cb-8121-8921-fb1f1be1b6b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Range:</strong> Varies between 0 and 1 for a call option (or 0 to 100 on a 0 to 100 scale) and between -1 and 0 (-100 to 0) for a put option.</li></ul><ul id="14e84369-c8cb-812b-af77-f12415e6475f" class="bulleted-list"><li style="list-style-type:disc"><strong>Put Option Delta:</strong> The negative value indicates that the option premium and underlying value move in opposite directions.</li></ul><ul id="14e84369-c8cb-818f-bc1a-ca19d902fada" class="bulleted-list"><li style="list-style-type:disc"><strong>Delta Values for Different Option Moneyness:</strong><ul id="14e84369-c8cb-81cc-b996-cca9fd7e6db1" class="bulleted-list"><li style="list-style-type:circle"><strong>ATM options:</strong> Delta of 0.5.</li></ul><ul id="14e84369-c8cb-8196-9960-e525a50f1454" class="bulleted-list"><li style="list-style-type:circle"><strong>ITM options:</strong> Delta close to 1.</li></ul><ul id="14e84369-c8cb-810b-9704-c6b188b018fb" class="bulleted-list"><li style="list-style-type:circle"><strong>OTM options:</strong> Delta close to 0.</li></ul></li></ul><h3 id="14e84369-c8cb-8101-8dcd-dcbf5d806f97" class="">Gamma: Measuring Delta&#x27;s Rate of Change</h3><p id="14e84369-c8cb-8182-b038-d713f09ad93f" class=""><strong>Gamma, the second-order derivative of the premium,</strong> captures the rate at which an option&#x27;s delta changes as the underlying changes. It is expressed in deltas gained or lost per one-point change in the underlying. The delta increases by the amount of the gamma when the underlying rises and falls by the amount of the gamma when the underlying falls.</p><p id="14e84369-c8cb-81ae-b931-cd9d71823390" class=""><strong>Key Characteristics of Gamma:</strong></p><ul id="14e84369-c8cb-8123-b1ca-d2486ad1594c" class="bulleted-list"><li style="list-style-type:disc"><strong>Always Positive:</strong> Gamma is always a positive number for both calls and puts.</li></ul><ul id="14e84369-c8cb-81eb-9fa1-dd6d54720d0c" class="bulleted-list"><li style="list-style-type:disc"><strong>Gamma Risk:</strong> Large Gamma can translate to large gamma risk (directional risk).</li></ul><ul id="14e84369-c8cb-8182-9c37-ff78bf292f44" class="bulleted-list"><li style="list-style-type:disc"><strong>Long/Short Gamma:</strong><ul id="14e84369-c8cb-81a5-af74-ebc4f97b9220" class="bulleted-list"><li style="list-style-type:circle">Buying options (Calls or Puts) means you are long Gamma.</li></ul><ul id="14e84369-c8cb-8117-a3eb-c921b44863d9" class="bulleted-list"><li style="list-style-type:circle">Selling options (Calls or Puts) means you are short Gamma.</li></ul></li></ul><ul id="14e84369-c8cb-81f3-93e7-e4c44b0ee9c0" class="bulleted-list"><li style="list-style-type:disc"><strong>Shorting Options with Large Gamma:</strong> It&#x27;s generally advised to avoid shorting options that have large gamma, as they carry a higher risk.</li></ul><h3 id="14e84369-c8cb-8175-9649-d05f027582b7" class="">Theta: The Time Decay Factor</h3><p id="14e84369-c8cb-81bf-8dc3-c068f980ccbb" class=""><strong>Theta, or time decay factor, is the rate at which an option loses value as time passes.</strong> It is expressed in points lost per day when all other conditions remain the same.</p><p id="14e84369-c8cb-8106-889c-e7bcb79923d9" class=""><strong>Key Characteristics of Theta:</strong></p><ul id="14e84369-c8cb-815c-a7fa-f6586efb2d54" class="bulleted-list"><li style="list-style-type:disc"><strong>Always Positive:</strong> Time moves in one direction; hence theta is always a positive number, though it is sometimes written as a negative number to remind traders that it represents a loss in options value.</li></ul><ul id="14e84369-c8cb-8112-b1d7-d606e71176f8" class="bulleted-list"><li style="list-style-type:disc"><strong>Beneficial for Option Sellers:</strong> Theta is a friendly Greek to option sellers. They benefit from retaining the premium as the option loses value due to time decay.</li></ul><ul id="14e84369-c8cb-81be-bef3-e7a09d80aadb" class="bulleted-list"><li style="list-style-type:disc"><strong>Theta and Time to Expiry:</strong><ul id="14e84369-c8cb-8117-9d4a-ca199b718c93" class="bulleted-list"><li style="list-style-type:circle">Shorting naked options at the start of the series allows capturing a large time value, but the fall in premium owing to time is low.</li></ul><ul id="14e84369-c8cb-81c3-985b-ef285403f991" class="bulleted-list"><li style="list-style-type:circle">Shorting options close to expiry results in a low premium (due to low time value), but the fall in premium is rapid.</li></ul></li></ul><h3 id="14e84369-c8cb-8172-8470-c38de793fc95" class="">Vega: Sensitivity to Volatility Changes</h3><p id="14e84369-c8cb-812f-8fe2-cdf4e69201f1" class="">Vega measures the <strong>rate of change of the premium concerning changes in volatility.</strong> It helps assess how much an option&#x27;s price will change for every 1% change in the implied volatility of the underlying asset.  For example, if an option has a vega of 0.15, then for each 1% change in volatility, the option will gain or lose 0.15 in its theoretical value.</p><p id="14e84369-c8cb-81ef-beb2-d6c3d9be43fe" class=""><strong>Key Characteristics of Vega:</strong></p><ul id="14e84369-c8cb-815c-9280-c5abf3dbde2c" class="bulleted-list"><li style="list-style-type:disc"><strong>Always Positive:</strong> Vega is a positive number for both calls and puts since all options increase in premium when volatility increases.</li></ul><ul id="14e84369-c8cb-813c-9ebd-e39875a39d81" class="bulleted-list"><li style="list-style-type:disc"><strong>Vega and Time to Expiry:</strong> The effect of volatility is highest when more days are left for expiry.</li></ul><h3 id="14e84369-c8cb-8108-b40a-c2a5c1e39de3" class="">Normal Distribution and Option Trading</h3><p id="14e84369-c8cb-81a9-a810-ff9b6c9c5e61" class="">Normal distribution is a statistical concept that describes how data is distributed around a mean value. In option trading, the daily returns of a stock are considered to be normally distributed (or close to normal distribution).</p><p id="14e84369-c8cb-81da-bdb6-f45eaecce0d5" class=""><strong>Normal distribution helps traders:</strong></p><ul id="14e84369-c8cb-8179-806a-ea2a779685d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Estimate the range within which a stock&#x27;s price is likely to move:</strong> By calculating the standard deviation of historical returns, traders can estimate the potential price range for a given confidence level. For instance, there is a 68% chance that the daily return of a stock will fall within one standard deviation of its mean, a 95% chance it will fall within two standard deviations, and a 99.7% chance it will fall within three standard deviations.</li></ul><ul id="14e84369-c8cb-8101-a89b-ecf912aefccd" class="bulleted-list"><li style="list-style-type:disc"><strong>Select options strikes to sell/write:</strong> Based on the normal distribution, traders can choose strikes that are likely to expire out-of-the-money with a certain probability, thus limiting their potential losses.</li></ul><ul id="14e84369-c8cb-8153-97d4-cc586f1d684b" class="bulleted-list"><li style="list-style-type:disc"><strong>Set stop-loss orders based on volatility:</strong> Volatility, represented by standard deviation, can be used to determine appropriate stop-loss levels for trading positions.</li></ul><h3 id="14e84369-c8cb-8168-ab91-e884226f57e5" class="">Conclusion</h3><p id="14e84369-c8cb-8154-a9e5-c65c88cea9aa" class="">Understanding Option Greeks is crucial for successful options trading. They provide insights into the factors affecting option premiums and help traders analyse and manage their options positions more effectively. By utilizing tools like MS Excel and statistical concepts like normal distribution, traders can quantify and assess option-related risks and opportunities. However, it&#x27;s important to remember that option trading is complex and involves inherent risks. Thorough research, analysis, and a solid understanding of options theory are essential before engaging in options trading.</p><hr id="14e84369-c8cb-819a-bb23-e151fb617905"/><h2 id="14e84369-c8cb-8172-8357-c8e54c6403eb" class="">Option Pricing and Strike Selection</h2><p id="14e84369-c8cb-81f3-986c-e153b471de04" class="">This section builds upon the previously learned concepts of Option Greeks, volatility, and time decay to discuss <strong>option pricing and strategies for selecting appropriate strike prices for trading</strong>.</p><h3 id="14e84369-c8cb-810a-ac92-f954196d85e6" class="">Option Pricing: Black &amp; Scholes Model and Option Greeks</h3><p id="14e84369-c8cb-81d9-9527-e83d1c19e3df" class="">The <strong>Black &amp; Scholes (B&amp;S) Option Pricing Model</strong> estimates an option&#x27;s theoretical price and its associated Greeks. It considers several inputs, including the underlying asset&#x27;s spot price, the strike price, the risk-free interest rate, the implied volatility, any dividends expected from the underlying asset, and the time to expiry.</p><p id="14e84369-c8cb-812c-9c20-c87d222cf57e" class="">The B&amp;S model outputs several values, including the theoretical prices of call and put options for the selected strike and the Option Greeks: Delta, Gamma, Theta, and Vega.</p><p id="14e84369-c8cb-8106-95ff-df0f185cb722" class=""><strong>Understanding the relationship between the Greeks, volatility, and time decay is crucial for interpreting option pricing and making informed trading decisions.</strong></p><h3 id="14e84369-c8cb-817d-abce-cf403f4bbc94" class="">Strike Selection: A Multi-Factor Approach</h3><p id="14e84369-c8cb-8160-8f00-f656999afc1d" class="">Selecting the appropriate strike price for an options trade requires a multifaceted approach that considers various factors, including:</p><ul id="14e84369-c8cb-8187-881b-f2376fd8db06" class="bulleted-list"><li style="list-style-type:disc"><strong>Market Outlook:</strong> A bullish outlook suggests buying call options or selling put options, while a bearish outlook suggests buying put options or selling call options.</li></ul><ul id="14e84369-c8cb-81a0-8234-d7702a4766b6" class="bulleted-list"><li style="list-style-type:disc"><strong>Volatility Expectations:</strong> Buying options when volatility is expected to increase and selling options when volatility is expected to decrease is generally recommended.</li></ul><ul id="14e84369-c8cb-8119-a1f0-c9f9b34c4b50" class="bulleted-list"><li style="list-style-type:disc"><strong>Time to Expiry:</strong> The time remaining until the option&#x27;s expiry significantly influences the choice of strike price.</li></ul><ul id="14e84369-c8cb-81ef-bf60-da08fa0f828c" class="bulleted-list"><li style="list-style-type:disc"><strong>Target Time Frame:</strong> The expected timeframe for the underlying asset to reach the target price should also be considered.</li></ul><h3 id="14e84369-c8cb-81c2-a7f3-c9228ef684d4" class="">Strike Selection Strategies Based on Time to Expiry and Target Time Frame</h3><p id="14e84369-c8cb-810e-9243-e63db425a771" class="">The sources provide specific recommendations for strike selection based on whether the trade is initiated in the first or second half of the options series and the timeframe within which the target price is expected to be reached.</p><p id="14e84369-c8cb-8154-83b5-c7b1807360ff" class=""><strong>First Half of the Series:</strong></p><table id="14e84369-c8cb-81fc-afbe-f922dcd3d139" class="simple-table"><tbody><tr id="14e84369-c8cb-8154-8b4f-c63891c3f44f"><td id="vjaF" class="block-color-yellow">Position Initiation</td><td id="~l[m" class="block-color-yellow">Target Expectation</td><td id=";Z;{" class="block-color-yellow">Best Strike to Trade</td></tr><tr id="14e84369-c8cb-81f1-bfc8-f1f2d9bcb25d"><td id="vjaF" class="block-color-yellow">1st half</td><td id="~l[m" class="">5 days from initiation</td><td id=";Z;{" class="">Far OTM (2 strikes away from ATM)</td></tr><tr id="14e84369-c8cb-8196-a3d0-f930f988fa6e"><td id="vjaF" class="block-color-yellow">1st half</td><td id="~l[m" class="">15 days from initiation</td><td id=";Z;{" class="">ATM or slightly OTM</td></tr><tr id="14e84369-c8cb-817d-a1ce-d9cfa5a9970a"><td id="vjaF" class="block-color-yellow">1st half</td><td id="~l[m" class="">25 days from initiation</td><td id=";Z;{" class="">Slightly ITM options</td></tr><tr id="14e84369-c8cb-8123-b65b-caaf10a21cff"><td id="vjaF" class="block-color-yellow">1st half</td><td id="~l[m" class="">On expiry day</td><td id=";Z;{" class="">ITM</td></tr></tbody></table><p id="14e84369-c8cb-815d-a53e-f1cc261429e9" class=""><strong>Second Half of the Series:</strong></p><table id="14e84369-c8cb-8120-8713-ebb555839556" class="simple-table"><tbody><tr id="14e84369-c8cb-81a9-a4a0-fff9b6842580"><td id="wudT" class="block-color-yellow">Position Initiation</td><td id="aMdx" class="block-color-yellow">Target Expectation</td><td id="y~ZG" class="block-color-yellow">Best Strike to Trade</td></tr><tr id="14e84369-c8cb-81f3-8e12-ee483f1fad2e"><td id="wudT" class="block-color-yellow">2nd half</td><td id="aMdx" class="">Same day</td><td id="y~ZG" class="">Far OTM (2 or 3 strikes away from ATM)</td></tr><tr id="14e84369-c8cb-81e0-8b41-ee3e052e77b0"><td id="wudT" class="block-color-yellow">2nd half</td><td id="aMdx" class="">5 days from initiation</td><td id="y~ZG" class="">Slightly OTM (1 strike away from ATM)</td></tr><tr id="14e84369-c8cb-813b-9b76-cf7f8b6fc905"><td id="wudT" class="block-color-yellow">2nd half</td><td id="aMdx" class="">10 days from initiation</td><td id="y~ZG" class="">Slightly ITM or ATM</td></tr><tr id="14e84369-c8cb-814c-83c9-dfb2f825b027"><td id="wudT" class="block-color-yellow">2nd half</td><td id="aMdx" class="">On expiry day</td><td id="y~ZG" class="">ITM</td></tr></tbody></table><h3 id="14e84369-c8cb-81e2-8a42-eb2df55d0f4f" class="">Strike Selection for Option Writing</h3><p id="14e84369-c8cb-81fa-84a1-c458582a75c5" class="">For option writers, selecting the appropriate strike price is crucial for managing risk. The sources suggest utilizing the normal distribution calculation to identify strikes that are likely to expire out-of-the-money.</p><p id="14e84369-c8cb-8139-8397-c9652a8b0851" class=""><strong>Specifically, the sources recommend considering strikes that are one or two standard deviations away from the current underlying price, depending on the desired level of flexibility.</strong></p><h3 id="14e84369-c8cb-81d8-a6a6-eaee442767df" class="">Practical Considerations</h3><p id="14e84369-c8cb-8165-9025-cbe320cb8e29" class="">The sources emphasize that no option strategy guarantees profits, and successful option trading requires a deep understanding of option theory, diligent research, and careful analysis.</p><p id="14e84369-c8cb-8152-a2c5-f7e8966ba82e" class="">They also highlight the importance of considering factors such as liquidity and the impact of volatility on premium pricing when selecting strike prices.</p><h3 id="14e84369-c8cb-8190-a08f-fe729d1d7d4d" class="">Conclusion</h3><p id="14e84369-c8cb-81b5-b778-df4dbd3795b7" class="">Option pricing and strike selection are intertwined concepts that require a comprehensive understanding of Option Greeks, volatility, time decay, and market dynamics.  By considering these factors and utilizing the recommended strategies, traders can enhance their ability to make informed decisions and manage risk effectively.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
