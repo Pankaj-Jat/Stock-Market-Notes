@@ -5,7 +5,7 @@
 
 ## 🌟 Overview
 
-Stock Basics is a modern, intuitive learning platform designed to transform beginners into confident market participants. Our carefully structured curriculum covers everything from fundamental concepts to advanced trading strategies.
+Stock Market Notes is a modern, intuitive learning platform designed to transform beginners into confident market participants. Our carefully structured curriculum covers everything from fundamental concepts to advanced trading strategies.
 
 ## 🎯 Learning Tracks
 
