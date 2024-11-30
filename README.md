@@ -1,5 +1,5 @@
 # Stock Market Learning Hub
-# https://pankaj-jat.github.io/Stock-Market-Notes/
+https://pankaj-jat.github.io/Stock-Market-Notes/
 
 A comprehensive web-based platform for learning about stock markets, technical analysis, and trading strategies.
 
