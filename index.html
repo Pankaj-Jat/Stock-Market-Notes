@@ -6,76 +6,181 @@
     <meta name="theme-color" content="#1a237e">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Stock Market Learning Hub</title>
+    <title>Stock Basics - Learn Stock Market Trading</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
+        <header class="main-header">
+            <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-chart-line"></i>
-                    <h2>Trading Hub</h2>
+                    <h1>Stock Basics</h1>
                 </div>
-                <button id="theme-toggle" title="Toggle dark/light mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <div class="header-actions">
+                    <button id="theme-toggle" title="Toggle dark/light mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </div>
-            <div class="search-box">
-                <input type="text" id="search" placeholder="Search modules..." aria-label="Search modules">
-                <i class="fas fa-search"></i>
-            </div>
-            <nav class="module-list" role="navigation" aria-label="Course modules">
-                <!-- Modules will be loaded here by JavaScript -->
-            </nav>
-            <div class="sidebar-footer">
-                <p><i class="fas fa-graduation-cap"></i> Learning Platform</p>
-                <small>&copy; 2024 Stock Market Hub</small>
-            </div>
-        </aside>
+        </header>
+
         <main class="content">
-            <div id="content-area">
-                <div class="welcome-screen">
-                    <div class="welcome-header">
-                        <i class="fas fa-chart-bar welcome-icon"></i>
-                        <h1>Welcome to Stock Market Learning Hub</h1>
-                        <p>Your comprehensive guide to financial markets</p>
+            <div class="hero-section">
+                <h1>Master the Stock Market</h1>
+                <p>Your journey to financial literacy starts here</p>
+            </div>
+
+            <div class="modules-container">
+                <!-- Foundation Track -->
+                <div class="track-section foundation">
+                    <div class="track-header">
+                        <div class="track-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="track-info">
+                            <h2>Foundation Track</h2>
+                            <p>Build your trading knowledge from the ground up</p>
+                        </div>
                     </div>
-                    <div class="feature-grid">
-                        <div class="feature" tabindex="0">
-                            <i class="fas fa-book"></i>
-                            <h3>10 Detailed Modules</h3>
-                            <p>Comprehensive learning material</p>
+                    <div class="modules-row">
+                        <a href="Module 1 - Introduction to Stock Markets.html" class="module-card">
+                            <span class="module-number">01</span>
+                            <div class="module-content">
+                                <h3>Introduction to Stock Markets</h3>
+                                <p>Learn the fundamentals of stock markets and basic terminology</p>
+                                <div class="module-footer">
+                                    <span class="difficulty beginner">Beginner</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="Module 2 Technical Analysis.html" class="module-card">
+                            <span class="module-number">02</span>
+                            <div class="module-content">
+                                <h3>Technical Analysis</h3>
+                                <p>Master chart patterns and technical indicators</p>
+                                <div class="module-footer">
+                                    <span class="difficulty beginner">Beginner</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="Module 3 Fundamental Analysis.html" class="module-card">
+                            <span class="module-number">03</span>
+                            <div class="module-content">
+                                <h3>Fundamental Analysis</h3>
+                                <p>Learn to analyze company financials and valuations</p>
+                                <div class="module-footer">
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Advanced Track -->
+                <div class="track-section advanced">
+                    <div class="track-header">
+                        <div class="track-icon">
+                            <i class="fas fa-chart-bar"></i>
                         </div>
-                        <div class="feature" tabindex="0">
-                            <i class="fas fa-chart-pie"></i>
-                            <h3>Technical Analysis</h3>
-                            <p>Learn chart patterns & indicators</p>
+                        <div class="track-info">
+                            <h2>Advanced Track</h2>
+                            <p>Dive deep into advanced trading concepts</p>
                         </div>
-                        <div class="feature" tabindex="0">
-                            <i class="fas fa-coins"></i>
-                            <h3>Fundamental Analysis</h3>
-                            <p>Understand company valuations</p>
-                        </div>
-                        <div class="feature" tabindex="0">
+                    </div>
+                    <div class="modules-row">
+                        <a href="Module 4 Futures Trading.html" class="module-card">
+                            <span class="module-number">04</span>
+                            <div class="module-content">
+                                <h3>Futures Trading</h3>
+                                <p>Understand futures markets and trading strategies</p>
+                                <div class="module-footer">
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="Module 5 Options Theory.html" class="module-card">
+                            <span class="module-number">05</span>
+                            <div class="module-content">
+                                <h3>Options Theory</h3>
+                                <p>Learn options concepts and pricing models</p>
+                                <div class="module-footer">
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="Module 6 Options Strategies.html" class="module-card">
+                            <span class="module-number">06</span>
+                            <div class="module-content">
+                                <h3>Options Strategies</h3>
+                                <p>Master complex options trading strategies</p>
+                                <div class="module-footer">
+                                    <span class="difficulty expert">Expert</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Specialized Track -->
+                <div class="track-section specialized">
+                    <div class="track-header">
+                        <div class="track-icon">
                             <i class="fas fa-brain"></i>
-                            <h3>Trading Psychology</h3>
-                            <p>Master market psychology</p>
                         </div>
+                        <div class="track-info">
+                            <h2>Specialized Track</h2>
+                            <p>Master specific areas of trading and finance</p>
+                        </div>
+                    </div>
+                    <div class="modules-row">
+                        <a href="Module 7 Markets & Taxation.html" class="module-card">
+                            <span class="module-number">07</span>
+                            <div class="module-content">
+                                <h3>Markets & Taxation</h3>
+                                <p>Learn about market regulations and tax implications</p>
+                                <div class="module-footer">
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="Module 8 Currency and Commodity Futures.html" class="module-card">
+                            <span class="module-number">08</span>
+                            <div class="module-content">
+                                <h3>Currency & Commodities</h3>
+                                <p>Explore forex and commodity trading markets</p>
+                                <div class="module-footer">
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="Module 9 Risk Management & Trading Psychology.html" class="module-card">
+                            <span class="module-number">09</span>
+                            <div class="module-content">
+                                <h3>Trading Psychology</h3>
+                                <p>Master the mental aspects of trading</p>
+                                <div class="module-footer">
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="Module 10 Personal Finance.html" class="module-card">
+                            <span class="module-number">10</span>
+                            <div class="module-content">
+                                <h3>Personal Finance</h3>
+                                <p>Build strong personal finance foundations</p>
+                                <div class="module-footer">
+                                    <span class="difficulty beginner">Beginner</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-    <script>
-        // Debug message to check if script is loading
-        console.log('Page loaded');
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM fully loaded');
-        });
-    </script>
     <script src="./script.js"></script>
 </body>
 </html>
