@@ -1,10 +1,7 @@
 # 📈 Stock Market Notes
 
 > Your comprehensive guide to mastering the stock market
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-2.0-green.svg)
-![Status](https://img.shields.io/badge/status-active-success.svg)
+> https://pankaj-jat.github.io/Stock-Market-Notes/
 
 ## 🌟 Overview
 
@@ -73,10 +70,6 @@ We welcome contributions! Feel free to:
 - Suggest new features
 - Improve documentation
 - Add learning resources
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
