@@ -3,7 +3,7 @@
 > Your comprehensive guide to mastering the stock market
 ![Version](https://img.shields.io/badge/version-2.0-green.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
-> https://pankaj-jat.github.io/Stock-Market-Notes/
+https://pankaj-jat.github.io/Stock-Market-Notes/
 
 ## 🌟 Overview
 
